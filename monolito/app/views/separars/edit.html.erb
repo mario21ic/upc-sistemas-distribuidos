@@ -1,0 +1,16 @@
+<%= content_for :head do %>
+  <br/>
+  <div class="row bd-example">
+    <div class="col-md-12 mb-4">
+      <span class="display-2">Separar </span>
+      <span class="display-4"> » Editar</span>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :titulo do %>
+     <i class="icon-iconfinder azul"></i>
+     Departamento <span class="display-5"> » Separar</span>
+<% end %>
+
+<%= render 'form', separar: @separar %>

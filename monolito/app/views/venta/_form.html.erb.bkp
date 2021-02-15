@@ -1,0 +1,82 @@
+<%= form_with(model: ventum, local: true) do |form| %>
+  <% if ventum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ventum.errors.count, "error") %> prohibited this ventum from being saved:</h2>
+
+      <ul>
+        <% ventum.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+  
+  <section >
+	<div class="form-inline">
+		 
+		<div class="form-group col-md-2">
+      <select class="form-control form-control-lg mr-sm-2" name="ventum[tipo_compra]" id="ventum_tipo_compra">
+          <option selected>Tipo de Venta</option>
+          <option value="Contado">Contado</option>
+          <option value="Financiado">Financiado</option>
+      </select>
+      <h2>N°</h2>
+      <label>
+      <input class="form-control"  type="text" name="numero">
+      </label>
+    </div>
+       
+
+    
+	</div>
+     </section>
+
+     <section>
+     
+
+		 	<div class="form-group" style="border:solid black;margin-top:20px; ">
+		 	  
+		 	 <div  class="form-inline">
+          <div style="margin:35px" class="form-group col-md-2">	 
+              <label class= "col-sm-8 col-form-label">Nombres</label>
+              <input class="form-control"  type="text" name="Nombres">
+          </div>
+          <div style="margin:35px" class="form-group col-md-2">
+              <label class= "col-sm-8 col-form-label">DNI</label>
+              <input class="form-control"  type="text" name="DNI">
+          </div>
+          <div style="margin:35px" class="form-group col-md-2">
+              <label class= "col-sm-8 col-form-label">Banco</label>
+              <input class="form-control"  type="text" name="Banco">
+          </div>
+          <div style="margin:35px"  class="form-group col-md-2">
+              <label class= "col-sm-14 col-form-label">Monto Financiado</label>
+              <input class="form-control"  type="text" name="Monto Financiado">
+          </div>
+
+		 	    <div style="margin:35px" class="form-group col-md-2">	 
+              <label class= "col-sm-9 col-form-label">Apellidos</label>
+              <input class="form-control"  type="text" name="Apellidos">
+              </div>
+              <div style="margin:35px" class="form-group col-md-2">
+              <label class= "col-sm-9 col-form-label">Fecha</label>
+              <input class="form-control"  type="date" name="Fecha">
+              </div>
+              <div style="margin:35px" class="form-group col-md-2">
+              <label class= "col-sm-14 col-form-label">Pago de 10%</label>
+              <input class="form-control"  type="text" name="Pago">
+              </div>
+              <div style="margin:35px"  class="form-group col-md-2">
+              <label class= "col-sm-14 col-form-label">N° Movimiento</label>
+              <input class="form-control"  type="text" name="Nmovimiento">
+              </div>
+		 	 </div>		
+            
+		 	</div>
+      <div style="margin-right: 150px"  align="right">
+        <%= form.submit "Confirmar Venta", :class => "btn btn-lg btn-success text-light"%>
+        <button class="btn btn-warning" type="submit"> Limpiar</button>
+      </div>
+		 </section>
+  <% end %>

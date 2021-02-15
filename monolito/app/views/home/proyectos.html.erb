@@ -1,0 +1,9 @@
+<%= content_for :titulo do %>
+     Proyectos
+<% end %>
+  
+<% @home = 'S'%>
+
+<%= render '/proyectos/filtros'%>
+
+<%= render '/proyectos/item', proyectos: @proyectos %>

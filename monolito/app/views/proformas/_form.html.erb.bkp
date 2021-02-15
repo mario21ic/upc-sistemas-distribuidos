@@ -1,0 +1,125 @@
+<%= form_with(model: proforma, local: true) do |form| %>
+  <% if proforma.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(proforma.errors.count, "error") %> prohibited this proforma from being saved:</h2>
+
+      <ul>
+        <% proforma.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <form >
+  <div class="form-row">
+    <%= form.hidden_field :solicitud_id %>
+    <div class="col-md-4 mb-3">
+      <label>DNI</label>
+      <input type="text" class="form-control" id="DNI" >
+    </div>
+    <div class="col-md-4 mb-3">
+      <label >Apellidos</label>
+      <input type="text" class="form-control" id="Apellidos">
+    </div>
+    
+    <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label >Nombres</label>
+      <input type="text" class="form-control" id="Nombres">
+        <%= form.text_field :numero_documento, :class=>"form-control form-control-lg mr-sm-2"%>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label >Correo</label>
+      <input type="text" class="form-control" id="Correo">
+     
+    </div>
+
+</form>
+    
+    <section>  
+
+		
+<table class="table table-bordered">
+		   <thead>
+		    <tr align="center">
+		      <th scope="col">Item</th>
+		      <th scope="col">Descripcion</th>
+		      <th scope="col">Area</th>
+		      <th scope="col">Piso</th>
+		      <th scope="col">Costo</th> 
+		      <th scope="col">Sub total</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr align="center">
+		      <th scope="row">1</th>
+		      <th>
+		      	<div  style="width: 300px"  class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    
+		  </div>
+		  <select class="custom-select" id="inputGroupSelect01">
+		    <option selected>Departamento</option>
+		    <option value="1">Proyecto 1</option>
+		    <option value="2">Proyecto 2</option>
+		    <option value="3">Proyecto 3</option>
+		  </select>
+		</div>
+		      </th>
+		      <td >
+		      	<label for="Area">
+				<input style="width: 100px" type="text" class="form-control" name="Area">
+		      
+		      </label>
+		      </td>
+		      <td>
+		      	<label for="Piso">
+				<input style="width: 100px" type="text" class="form-control" name="Piso">
+		      
+		      </label>
+		      </td>
+		      <td>
+		      	<label for="Costo">
+				<input type="text" class="form-control" name="Costo">
+		      
+		      </label>
+		      </td>
+		      <td>
+		      	
+		      	<label for="Subtotal">
+				<input type="text" class="form-control" name="Subtotal">
+		      
+		      </label>
+		      </td>
+
+		    </tr>
+
+</table>
+
+	</form>
+
+	<form class="form-inline">
+     
+		<label class= "col-sm-1 col-form-label" for="IGV">IGV</label>
+    <input type="text" class="form-control" name="IGV">
+    <label class= "col-sm-1 col-form-label" for="IGV">Descuento</label>
+    <input type="text" class="form-control" name="Descuento">
+    <label class= "col-sm-1 col-form-label" for="IGV">Total</label>
+		<input type="text" class="form-control" name="Total">
+		
+		
+    
+  </form>
+  <br>
+   <form class="form-inline">
+   <div class="form-group mx-sm-3 mb-2">
+  <button   type="submit" class="btn btn-primary mb-4">Limpiar</button><br>
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+  <button   type="submit" class="btn btn-primary mb-4">Confirmar</button>
+</div>
+</form>
+
+</section>
+<% end %>

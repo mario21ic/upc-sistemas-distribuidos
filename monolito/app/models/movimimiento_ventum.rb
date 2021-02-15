@@ -1,0 +1,2 @@
+class MovimimientoVentum < ApplicationRecord
+end

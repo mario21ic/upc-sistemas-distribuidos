@@ -1,0 +1,100 @@
+<%= form_with(model: departamento, local: true) do |form| %>
+        <%= form.hidden_field :cod_proyecto%>
+<div class="form-row mt-3">
+      <div class="col-md-3 mb-3 field">
+        <%= form.label :numero, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.number_field :numero, :class=>"form-control form-control-lg" %>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-3 mb-3 field">
+        <%= form.label :piso, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.number_field :piso, :class=>"form-control form-control-lg" %>
+
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-3 mb-3 field">
+        <%= form.label :area_total, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.number_field :area_total, :class=>"form-control form-control-lg" %>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-3 mb-3 field">
+        <%= form.label :area_techada, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.number_field :area_techada, :class=>"form-control form-control-lg" %>
+
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-3 mb-3 field">
+        <%= form.label :dormitorios, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.number_field :dormitorios, :class=>"form-control form-control-lg" %>
+
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-3 mb-3 field">
+        <%= form.label :baños, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.number_field :baños, :class=>"form-control form-control-lg" %>
+
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-3 mb-3 field">
+        <%= form.label :mca_favorito, "Favorito", :class=>"col-form-label col-form-label-lg" %>
+
+            <%= form.collection_select :mca_favorito, @variables.where(tipo_variable: 'SiNo'), :codigo_variable, :descricion_variable, {:include_blank  => "[Seleccione]"}, :class=>"form-control form-control-lg mr-sm-2", :required=>"required"%>
+
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-3 mb-3 field">
+        <%= form.label :estado, :class=>"col-form-label col-form-label-lg" %>
+
+        <%= form.collection_select :estado, @variables.where(tipo_variable: 'Estado Departamento'), :codigo_variable, :descricion_variable, {:include_blank  => "[Seleccione]"}, :class=>"form-control form-control-lg mr-sm-2", :required=>"required"%>
+        <div class="valid-feedback">
+           Looks good!
+        </div>
+      </div>  
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :descripcion_corta, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_area :descripcion_corta, :class=>"form-control form-control-lg" %>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-8 mb-3 field">
+        <%= form.label :descripcion_larga, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_area :descripcion_larga, :class=>"form-control form-control-lg" %>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+</div>
+
+
+  <div class="contenedorBoton">
+        <%= link_to(proyecto_path(@proyecto), :class => "btn my-sm-0 btn-lg btn-warning text-light") do %>
+          <i class="icon-arrow-left-24"></i> Regresar
+        <%end%>
+          <a class="btn btn-danger btn-lg text-light" href="/archivos/<%=departamento.cod_proyecto%>/<%=departamento.id%>/index">
+              <i class="icon-image-24"></i>
+              Ver Imagenes
+          </a>
+        <%= button_tag(type: 'submit', class: "btn my-sm-0 btn-lg btn-success text-light") do %>
+          <i class="icon-check-24"></i>
+           Guardar
+        <% end %>
+  </div>
+
+
+
+<% end %>

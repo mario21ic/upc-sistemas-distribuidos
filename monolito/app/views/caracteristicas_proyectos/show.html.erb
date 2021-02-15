@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cod proyecto:</strong>
+  <%= @caracteristicas_proyecto.cod_proyecto %>
+</p>
+
+<p>
+  <strong>Cod caracteristica:</strong>
+  <%= @caracteristicas_proyecto.cod_caracteristica %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @caracteristicas_proyecto.estado %>
+</p>
+
+<p>
+  <strong>Usu crea:</strong>
+  <%= @caracteristicas_proyecto.usu_crea %>
+</p>
+
+<p>
+  <strong>Fec crea:</strong>
+  <%= @caracteristicas_proyecto.fec_crea %>
+</p>
+
+<p>
+  <strong>Usu mod:</strong>
+  <%= @caracteristicas_proyecto.usu_mod %>
+</p>
+
+<p>
+  <strong>Fec mod:</strong>
+  <%= @caracteristicas_proyecto.fec_mod %>
+</p>
+
+<%= link_to 'Edit', edit_caracteristicas_proyecto_path(@caracteristicas_proyecto) %> |
+<%= link_to 'Back', caracteristicas_proyectos_path %>

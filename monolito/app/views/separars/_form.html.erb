@@ -1,0 +1,66 @@
+<%= form_with(model: separar, local: true) do |form| %>
+  <% if separar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(separar.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+      <ul>
+        <% separar.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="form-row">
+  <%= form.hidden_field :departamento_id %>
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :nombres, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :nombres, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :apellidos, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :apellidos, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :dni, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :dni, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :correo, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.email_field :correo, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :voucher, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :voucher, :class=>"form-control form-control-lg mr-sm-2" %>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :monto, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :monto, :class=>"form-control form-control-lg mr-sm-2", :value => "5000"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+    <div class="actions text-right">
+      <%= form.submit "Guardar", :class => "btn btn-lg btn-success text-light"%>
+      <%= link_to 'Cancelar', departamentos_path, :class => "btn-warning btn btn-lg"%>
+    </div>
+  </div>
+
+<% end %>

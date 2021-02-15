@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo_documento: MyString
+  numero_documento: MyString
+  estado: MyString
+  usu_crea: MyString
+  fec_crea: 2020-11-01 01:38:53
+  usu_mod: MyString
+  fec_mod: 2020-11-01 01:38:53
+
+two:
+  tipo_documento: MyString
+  numero_documento: MyString
+  estado: MyString
+  usu_crea: MyString
+  fec_crea: 2020-11-01 01:38:53
+  usu_mod: MyString
+  fec_mod: 2020-11-01 01:38:53

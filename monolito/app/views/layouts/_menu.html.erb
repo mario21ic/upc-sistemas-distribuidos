@@ -1,0 +1,242 @@
+        <nav  class="navbar navbar-expand-lg navbar-light bd-navbar justify-content-center">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+
+          <span class="navbar-brand mr-0 ">
+            <span class="MostrarNombreXD">
+              <small>
+                <%= render partial: '/layouts/infogrupo'%>
+                &nbsp;
+              </small>
+            </span>
+            <a style="align-content: left" class="mr-0 mr-md-2 rounded text-center x btn btn-outline-success" href="/">
+              <%= image_tag("panel/LOGOHOME.png", width: "20px") %>
+            </a>
+          </span>
+     
+          <div  class="nav nav-pills nav-fill" id="navbarTogglerDemo03">
+            <ul  class="navbar-nav mt-3 mt-lg-0 bd-navbar-nav flex-row">
+                
+                     
+                     <li class="nav-item">  
+                          <a class="nav-link" href="/">
+                              <i class="icon-home-16"></i>
+                              Home
+                          </a>
+                      </li>
+                      <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/nosotros">
+                              <i class="icon-eye-16"></i>
+                              Nosotros
+                          </a>
+                      </li>
+                      <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/contactenos">
+                              <i class="icon-comment-discussion-16"></i>
+                              Contáctenos
+                          </a>
+                      </li>
+                      <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/ultimos_proyectos">
+                              <i class="icon-organization-16"></i>
+                              Últimos Proyectos
+                          </a>
+                      </li>
+                      <br>
+                       
+                  <br>
+
+                      
+                      
+                      <% if logged_in? and current_usuario.perfil=="Administrador"%>  
+                      <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/proyectos">
+                              <i class="icon-grabber-16"></i>
+                              Proyectos
+                          </a>
+                      </li>
+                      <br>
+                      <li class="nav-item">  
+                      <a class="nav-link" href="/solicituds">
+                          <i class="icon-list-ordered-16"></i>
+                          Solicitudes
+                      </a>
+                      </li>
+                      <br>
+                      <li class="nav-item">  
+                          <a class="nav-link" href="/proformas">
+                              <i class="icon-file-16"></i>
+                              Proformas
+                          </a>
+                      </li>
+                      <br>
+                       <li class="nav-item">
+                          <a class="nav-link" href="/separars">
+                              <i class="icon-file-badge-16"></i>
+                              Separaciones
+                          </a>
+                      </li>
+                      <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/venta">
+                              <i class="icon-file-badge-16"></i>
+                              Ventas
+                          </a>
+                      </li>
+                      <br>
+                      
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/cita">
+                              <i class="icon-list-ordered-16"></i>
+                              Citas
+                          </a>
+                      </li>
+                    <!--
+                      <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/reportes">
+                              <i class="icon-desktop-download-16"></i>
+                              Reportes
+                          </a>
+                      </li>
+                    -->
+                      <br>
+        
+                      <li class="nav-item">  
+                          <a class="nav-link" href="/usuarios">
+                              <i class="icon-people-16"></i>
+                              Usuarios
+                          </a>
+                      </li>
+                      <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/variables">
+                              <i class="icon-gear-16"></i>
+                              Configuracion
+                          </a>
+                      </li>
+                      <%end%>
+
+                      <%if logged_in? and current_usuario.perfil=="Asesor" %>
+                      <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/proyectos">
+                              <i class="icon-grabber-16"></i>
+                              Proyectos
+                          </a>
+                      </li>
+                      <br>
+                      <li class="nav-item">  
+                      <a class="nav-link" href="/solicituds">
+                          <i class="icon-list-ordered-16"></i>
+                          Solicitudes
+                      </a>
+                      </li>
+                      <br>
+
+                      <li class="nav-item">  
+                          <a class="nav-link" href="/proformas">
+                              <i class="icon-file-16"></i>
+                              Proformas
+                          </a>
+                      </li>
+                      <br>
+                      
+                      
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/cita">
+                              <i class="icon-list-ordered-16"></i>
+                              Citas
+                          </a>
+                          <br>
+                      </li>
+                      <br>
+                       <li class="nav-item">
+                          <a class="nav-link" href="/separars">
+                              <i class="icon-file-badge-16"></i>
+                              Separaciones
+                          </a>
+                      </li>
+                      <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/venta">
+                              <i class="icon-file-badge-16"></i>
+                              Ventas
+                          </a>
+                      </li>
+                      <br>
+                       
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/reportes">
+                              <i class="icon-desktop-download-16"></i>
+                              Reportes
+                          </a>
+                      </li>
+                      <br>
+                       
+                      <%end%>
+                      <%if logged_in? and current_usuario.perfil=="Gerente" %>
+                      <br>
+                      <li class="nav-item">  
+                         <a class="nav-link" href="/proyectos">
+                             <i class="icon-grabber-16"></i>
+                             Proyectos
+                         </a>
+                     </li>
+                     <br>
+                      <li class="nav-item">  
+                      <a class="nav-link" href="/solicituds">
+                          <i class="icon-list-ordered-16"></i>
+                          Solicitudes
+                      </a>
+                      </li>
+                     <br>
+                     
+                      <li class="nav-item">  
+                          <a class="nav-link" href="/proformas">
+                              <i class="icon-file-16"></i>
+                              Proformas
+                          </a>
+                      </li>
+                      <br>
+                      <li class="nav-item">  
+                          <a class="nav-link" href="/cita">
+                              <i class="icon-list-ordered-16"></i>
+                              Citas
+                          </a>
+                          <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/separars">
+                              <i class="icon-file-badge-16"></i>
+                              Separaciones
+                          </a>
+                      </li>
+                          <br>
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/venta">
+                              <i class="icon-file-badge-16"></i>
+                              Ventas
+                          </a>
+                      </li>
+                      <br>
+                       
+                       <li class="nav-item">  
+                          <a class="nav-link" href="/reportes">
+                              <i class="icon-desktop-download-16"></i>
+                              Reportes
+                          </a>
+                      </li>
+                      <br>
+                       
+                      <%end%>
+                      <br>
+                      </ul>
+                      </div>
+                    </nav>
+

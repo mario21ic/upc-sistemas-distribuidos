@@ -1,0 +1,53 @@
+
+    <div class="col-md-4">
+      <select id="habitaciones" class="ctrlSearch form-control mr-sm-2 mt-2">
+        <option value="">Muchas habitaciones</option>
+        <option value="1">1 dormitorio</option> 
+        <option value="2">2 dormitorio</option>
+        <option value="3">3 dormitorio</option>
+        <option value="4">+ dormitorio</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select id="banio" class="ctrlSearch form-control mr-sm-2 mt-2">
+        <option value="">Varios baños</option>
+        <option value="1">1</option> 
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">+</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select id="pisos" class="ctrlSearch  form-control mr-sm-2 mt-2">
+        <option value="">Todos los pisos</option>
+        <option value="1">1</option> 
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">+</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select id="total" class="ctrlSearch form-control mr-sm-2 mt-2">
+        <option value="">Area</option>
+        <option value="value1">0-20</option> 
+        <option value="value2">21-40</option>
+        <option value="value3">40+</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select id="precio" class="ctrlSearch form-control mr-sm-2 mt-2">
+        <option value="">Todos los precios</option>
+        <option value="value1">$0.00-$50 000.00</option> 
+        <option value="value3">$50001.00-$150 000.00</option>
+        <option value="value3">$151 000.00+</option>
+      </select>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#limpiar').on('click', function() {
+          $("input,select").val('');
+          $("[id$='provincia'] option:not([value='']),[id$='distrito'] option:not([value=''])").hide();
+        });
+      });
+    </script>

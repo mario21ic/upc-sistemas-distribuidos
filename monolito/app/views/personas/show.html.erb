@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tipo documento:</strong>
+  <%= @persona.tipo_documento %>
+</p>
+
+<p>
+  <strong>Numero documento:</strong>
+  <%= @persona.numero_documento %>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @persona.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @persona.apellidos %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @persona.correo %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @persona.telefono %>
+</p>
+
+<p>
+  <strong>Mca juridico:</strong>
+  <%= @persona.mca_juridico %>
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @persona.sexo %>
+</p>
+
+<p>
+  <strong>Fecha aniversario:</strong>
+  <%= @persona.fecha_aniversario %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @persona.date %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @persona.estado %>
+</p>
+
+<p>
+  <strong>Usu crea:</strong>
+  <%= @persona.usu_crea %>
+</p>
+
+<p>
+  <strong>Fec crea:</strong>
+  <%= @persona.fec_crea %>
+</p>
+
+<p>
+  <strong>Usu mod:</strong>
+  <%= @persona.usu_mod %>
+</p>
+
+<p>
+  <strong>Fec mod:</strong>
+  <%= @persona.fec_mod %>
+</p>
+
+<%= link_to 'Edit', edit_persona_path(@persona) %> |
+<%= link_to 'Back', personas_path %>

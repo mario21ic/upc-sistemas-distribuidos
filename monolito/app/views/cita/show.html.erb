@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cita id:</strong>
+  <%= @citum.id %>
+</p>
+
+<p>
+  <strong>Solicitud id:</strong>
+  <%= @citum.solicitud_id %>
+</p>
+
+<p>
+  <strong>Fecha y Hora:</strong>
+  <%= @citum.fecha %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+        <%= Solicitud.select(:nombres).where("id = " + @citum.solicitud_id.to_s).collect(&:nombres)[0] %>
+        <%= Solicitud.select(:apellidos).where("id = " + @citum.solicitud_id.to_s).collect(&:apellidos)[0] %>
+</p>
+
+<p>
+  <strong>Creado:</strong>
+  <%= @citum.created_at %>
+</p>
+
+<p>
+  <strong>Modificado:</strong>
+  <%= @citum.updated_at %>
+</p>
+
+<!--
+<p>
+  <strong>Estado:</strong>
+  <%= @citum.estado %>
+</p>
+-->
+
+<%= link_to 'Editar', edit_citum_path(@citum), :class => "btn btn-warning" %> |
+<%= link_to 'Volver', cita_path, :class => "btn btn-info" %>

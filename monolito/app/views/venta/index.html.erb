@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+<%= content_for :head do %>
+  <br/>
+  <div class="row bd-example">
+    <div class="col-md-9 mb-2">
+      <h1 class="display-1">Ventas</h1>
+    </div>
+    <div class="col-md-3 text-right mb-2">
+      <br/>
+      <br/>
+      <% # link_to 'Nueva Venta', new_venta_path, :class => "form-control btn btn-lg btn-outline-primary text-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<br>
+<!--
+<% # link_to 'Nueva Venta', new_venta_path, :class => "btn btn-lg btn-success text-light" %>
+<br>
+-->
+
+    <% @ventas.each do |venta| %>
+      <div class="card mt-2">
+        <div class="col-md-12">
+            <div class="card-header row  bg-secondary text-light">
+              <div class="col-md-11">
+                 <%= Proyecto.select(:nombre).where("id = " + venta.departamento.cod_proyecto.to_s).collect(&:nombre)[0] %> (<b>Departamento: <%= venta.departamento.numero %></b>)
+              </div>
+              <div class="col-md-1 text-right">
+                <span class="badge badge-primary badge-pill"><%= venta.created_at %></span>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+              <div class="card-body pb-0">
+                <b>Cliente:</b> <%= venta.apellidos %> <%= venta.nombres %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-body pb-0">
+                <b>DNI:</b> <%= venta.numero_documento %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-body pb-0">
+                <b>Telefono:</b> <%= venta.telefono %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-body pb-0">
+                <b>Email Cliente:</b> <%= venta.correo %>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body pb-0 text-justify">
+                <b>Tipo:</b> 
+                <%= venta.tipo_compra %>
+              </div>
+            </div>
+            <div class="col-md-12 text-right mb-3">
+                  <%= link_to 'Mostrar', venta, :class => "btn-success btn-sm text-light mr-3" %>
+                  <%= link_to 'Editar', edit_ventum_path(venta), :class => "btn-warning btn-sm text-light mr-3" %>
+                  <%= link_to 'Eliminar', venta, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn-danger btn-sm text-light mr-3" %>
+            </div>
+        </div>
+      </div>
+
+    <% end %>
+
+<br>
+<br>
+<div class="digg_pagination">
+  <%= will_paginate @ventas %>
+</div>

@@ -1,0 +1,1 @@
+json.partial! "caracteristicas_proyectos/caracteristicas_proyecto", caracteristicas_proyecto: @caracteristicas_proyecto

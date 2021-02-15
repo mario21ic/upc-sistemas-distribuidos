@@ -1,0 +1,92 @@
+<p id="notice"><%= notice %></p>
+
+<%= content_for :head do %>
+  <br/>
+  <div class="row bd-example">
+    <div class="col-md-9 mb-2">
+      <h1 class="display-1">Clientes</h1>
+    </div>
+    <div class="col-md-3 text-right mb-2">
+      <br/>
+      <br/>
+      <%= link_to 'Nuevo Cliente', new_cliente_path, :class => "form-control btn btn-lg btn-outline-primary text-primary" %>
+    </div>
+  </div>
+<% end %>
+
+
+  <div class="row mt-4">
+    <div class="col-md-8">
+      <input class="form-control form-control-lg mr-sm-2" type="search" placeholder="Ingrese nombre del cliente" aria-label="Search">
+    </div>
+    <div class="col-md-4">
+      <select class="form-control form-control-lg mr-sm-2">
+        <option>Todos los estados</option>
+        <option value="value1">Activo</option> 
+        <option value="value3">Inactivo</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-md-8 text-right">
+    </div>
+    <div class="col-md-2 text-right">
+      <button class="form-control btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+    </div>
+    <div class="col-md-2 text-right">
+      <button class="form-control btn btn-warning my-2 my-sm-0" type="submit">Limpiar</button>
+    </div>
+  </div>
+
+    <% @clientes.each do |cliente| %>
+      <div class="card mt-2">
+        <div class="col-md-12">
+            <div class="card-header row">
+              <div class="col-md-11">
+                <b>Cliente:</b> Jorge Colque Perez
+              </div>
+              <div class="col-md-1 text-right">
+                <span class="badge badge-primary badge-pill">Activo</span>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <div class="card-body">
+                <b><%= cliente.tipo_documento %>:</b> <%= cliente.numero_documento %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Email:</b> correo@deprueba.com
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Télefono:</b> 987654321
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Tipo de Persona:</b> Natural
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Genero:</b> Masculino
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Fecha de Nacimiento:</b> 06/06/2006
+              </div>
+            </div>
+            <div class="col-md-12 text-right mb-3">
+                  <%= link_to 'Editar', edit_cliente_path(cliente), :class => "btn-danger btn-sm text-light mr-3" %>
+            </div>
+        </div>
+      </div>
+
+    <% end %>
+

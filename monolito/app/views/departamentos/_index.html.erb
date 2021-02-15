@@ -1,0 +1,21 @@
+<a name="departamento"></a>
+<%= content_for :titulo do %>
+  <% if @mca_titulo_proyecto != 'S' %>
+    <%= @proyecto.nombre %> <small> » Departamentos</small>
+  <% end %>
+<% end %>
+
+  <div class="contenedorBoton">
+        <%= link_to(proyectos_path, :class => "btn my-sm-0 btn-lg btn-warning text-light") do %>
+          <i class="icon-arrow-left-24"></i> Regresar
+        <%end%>
+
+      <% if @home != 'S' %>
+        <a class="btn my-sm-0 btn btn-primary btn-lg text-light" href="/departamentos/<%= @proyecto.id%>/new">
+          <i class="icon-plus-24"></i> Nuevo Departamento
+        </a>
+      <%end%>
+      
+  </div>
+
+  <%= render '/departamentos/item', departamentos: @departamentos %>

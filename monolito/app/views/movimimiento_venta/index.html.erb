@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Movimimiento Venta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Numero movimiento</th>
+      <th>Cod venta</th>
+      <th>Tipo movimiento</th>
+      <th>Numero operacion</th>
+      <th>Monto</th>
+      <th>Estado</th>
+      <th>Usu crea</th>
+      <th>Fec crea</th>
+      <th>Usu mod</th>
+      <th>Fec mod</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movimimiento_venta.each do |movimimiento_ventum| %>
+      <tr>
+        <td><%= movimimiento_ventum.numero_movimiento %></td>
+        <td><%= movimimiento_ventum.cod_venta %></td>
+        <td><%= movimimiento_ventum.tipo_movimiento %></td>
+        <td><%= movimimiento_ventum.numero_operacion %></td>
+        <td><%= movimimiento_ventum.monto %></td>
+        <td><%= movimimiento_ventum.estado %></td>
+        <td><%= movimimiento_ventum.usu_crea %></td>
+        <td><%= movimimiento_ventum.fec_crea %></td>
+        <td><%= movimimiento_ventum.usu_mod %></td>
+        <td><%= movimimiento_ventum.fec_mod %></td>
+        <td><%= link_to 'Show', movimimiento_ventum %></td>
+        <td><%= link_to 'Edit', edit_movimimiento_ventum_path(movimimiento_ventum) %></td>
+        <td><%= link_to 'Destroy', movimimiento_ventum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Movimimiento Ventum', new_movimimiento_ventum_path %>

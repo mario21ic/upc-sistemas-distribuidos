@@ -1,0 +1,615 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *xxx
+ *= require_tree
+ *= require_octicons
+ *= require_helper
+ *= require_self
+ */
+body{
+	background-image: url('https://oficinascentenario.pe/wp-content/themes/centenario/img/bg-dotted.png');
+	background-attachment: fixed
+}
+input,select,::placeholder,textarea{
+	border-color:rgb(108, 117, 125)!important;
+	color:#069!important;
+}
+
+.icon-alert-16:before{content:url('icons/alert-16.svg');}
+.icon-alert-24:before{content:url('icons/alert-24.svg');}
+.icon-archive-16:before{content:url('icons/archive-16.svg');}
+.icon-archive-24:before{content:url('icons/archive-24.svg');}
+.icon-arrow-both-16:before{content:url('icons/arrow-both-16.svg');}
+.icon-arrow-both-24:before{content:url('icons/arrow-both-24.svg');}
+.icon-arrow-down-16:before{content:url('icons/arrow-down-16.svg');}
+.icon-arrow-down-24:before{content:url('icons/arrow-down-24.svg');}
+.icon-arrow-down-left-24:before{content:url('icons/arrow-down-left-24.svg');}
+.icon-arrow-down-right-24:before{content:url('icons/arrow-down-right-24.svg');}
+.icon-arrow-left-16:before{content:url('icons/arrow-left-16.svg');}
+.icon-arrow-left-24:before{content:url('icons/arrow-left-24.svg');}
+.icon-arrow-right-16:before{content:url('icons/arrow-right-16.svg');}
+.icon-arrow-right-24:before{content:url('icons/arrow-right-24.svg');}
+.icon-arrow-switch-16:before{content:url('icons/arrow-switch-16.svg');}
+.icon-arrow-switch-24:before{content:url('icons/arrow-switch-24.svg');}
+.icon-arrow-up-16:before{content:url('icons/arrow-up-16.svg');}
+.icon-arrow-up-24:before{content:url('icons/arrow-up-24.svg');}
+.icon-arrow-up-left-24:before{content:url('icons/arrow-up-left-24.svg');}
+.icon-arrow-up-right-24:before{content:url('icons/arrow-up-right-24.svg');}
+.icon-beaker-16:before{content:url('icons/beaker-16.svg');}
+.icon-beaker-24:before{content:url('icons/beaker-24.svg');}
+.icon-bell-16:before{content:url('icons/bell-16.svg');}
+.icon-bell-24:before{content:url('icons/bell-24.svg');}
+.icon-bell-fill-24:before{content:url('icons/bell-fill-24.svg');}
+.icon-bell-slash-16:before{content:url('icons/bell-slash-16.svg');}
+.icon-bell-slash-24:before{content:url('icons/bell-slash-24.svg');}
+.icon-bold-16:before{content:url('icons/bold-16.svg');}
+.icon-bold-24:before{content:url('icons/bold-24.svg');}
+.icon-book-16:before{content:url('icons/book-16.svg');}
+.icon-book-24:before{content:url('icons/book-24.svg');}
+.icon-bookmark-16:before{content:url('icons/bookmark-16.svg');}
+.icon-bookmark-24:before{content:url('icons/bookmark-24.svg');}
+.icon-bookmark-fill-24:before{content:url('icons/bookmark-fill-24.svg');}
+.icon-bookmark-slash-16:before{content:url('icons/bookmark-slash-16.svg');}
+.icon-bookmark-slash-24:before{content:url('icons/bookmark-slash-24.svg');}
+.icon-bookmark-slash-fill-24:before{content:url('icons/bookmark-slash-fill-24.svg');}
+.icon-briefcase-16:before{content:url('icons/briefcase-16.svg');}
+.icon-briefcase-24:before{content:url('icons/briefcase-24.svg');}
+.icon-broadcast-16:before{content:url('icons/broadcast-16.svg');}
+.icon-broadcast-24:before{content:url('icons/broadcast-24.svg');}
+.icon-browser-16:before{content:url('icons/browser-16.svg');}
+.icon-bug-16:before{content:url('icons/bug-16.svg');}
+.icon-calendar-16:before{content:url('icons/calendar-16.svg');}
+.icon-calendar-24:before{content:url('icons/calendar-24.svg');}
+.icon-check-16:before{content:url('icons/check-16.svg');}
+.icon-check-24:before{content:url('icons/check-24.svg');}
+.icon-check-circle-16:before{content:url('icons/check-circle-16.svg');}
+.icon-check-circle-24:before{content:url('icons/check-circle-24.svg');}
+.icon-check-circle-fill-16:before{content:url('icons/check-circle-fill-16.svg');}
+.icon-check-circle-fill-24:before{content:url('icons/check-circle-fill-24.svg');}
+.icon-checklist-16:before{content:url('icons/checklist-16.svg');}
+.icon-checklist-24:before{content:url('icons/checklist-24.svg');}
+.icon-chevron-down-16:before{content:url('icons/chevron-down-16.svg');}
+.icon-chevron-down-24:before{content:url('icons/chevron-down-24.svg');}
+.icon-chevron-left-16:before{content:url('icons/chevron-left-16.svg');}
+.icon-chevron-left-24:before{content:url('icons/chevron-left-24.svg');}
+.icon-chevron-right-16:before{content:url('icons/chevron-right-16.svg');}
+.icon-chevron-right-24:before{content:url('icons/chevron-right-24.svg');}
+.icon-chevron-up-16:before{content:url('icons/chevron-up-16.svg');}
+.icon-chevron-up-24:before{content:url('icons/chevron-up-24.svg');}
+.icon-circle-16:before{content:url('icons/circle-16.svg');}
+.icon-circle-24:before{content:url('icons/circle-24.svg');}
+.icon-circle-slash-16:before{content:url('icons/circle-slash-16.svg');}
+.icon-circle-slash-24:before{content:url('icons/circle-slash-24.svg');}
+.icon-clippy-16:before{content:url('icons/clippy-16.svg');}
+.icon-clippy-24:before{content:url('icons/clippy-24.svg');}
+.icon-clock-16:before{content:url('icons/clock-16.svg');}
+.icon-clock-24:before{content:url('icons/clock-24.svg');}
+.icon-code-16:before{content:url('icons/code-16.svg');}
+.icon-code-24:before{content:url('icons/code-24.svg');}
+.icon-code-review-16:before{content:url('icons/code-review-16.svg');}
+.icon-code-review-24:before{content:url('icons/code-review-24.svg');}
+.icon-code-square-16:before{content:url('icons/code-square-16.svg');}
+.icon-code-square-24:before{content:url('icons/code-square-24.svg');}
+.icon-comment-16:before{content:url('icons/comment-16.svg');}
+.icon-comment-24:before{content:url('icons/comment-24.svg');}
+.icon-comment-discussion-16:before{content:url('icons/comment-discussion-16.svg');}
+.icon-comment-discussion-24:before{content:url('icons/comment-discussion-24.svg');}
+.icon-commit-24:before{content:url('icons/commit-24.svg');}
+.icon-copy-24:before{content:url('icons/copy-24.svg');}
+.icon-cpu-16:before{content:url('icons/cpu-16.svg');}
+.icon-cpu-24:before{content:url('icons/cpu-24.svg');}
+.icon-credit-card-16:before{content:url('icons/credit-card-16.svg');}
+.icon-credit-card-24:before{content:url('icons/credit-card-24.svg');}
+.icon-cross-reference-16:before{content:url('icons/cross-reference-16.svg');}
+.icon-cross-reference-24:before{content:url('icons/cross-reference-24.svg');}
+.icon-dash-16:before{content:url('icons/dash-16.svg');}
+.icon-dash-24:before{content:url('icons/dash-24.svg');}
+.icon-database-16:before{content:url('icons/database-16.svg');}
+.icon-database-24:before{content:url('icons/database-24.svg');}
+.icon-desktop-download-16:before{content:url('icons/desktop-download-16.svg');}
+.icon-desktop-download-24:before{content:url('icons/desktop-download-24.svg');}
+.icon-device-camera-16:before{content:url('icons/device-camera-16.svg');}
+.icon-device-camera-video-16:before{content:url('icons/device-camera-video-16.svg');}
+.icon-device-camera-video-24:before{content:url('icons/device-camera-video-24.svg');}
+.icon-device-desktop-16:before{content:url('icons/device-desktop-16.svg');}
+.icon-device-desktop-24:before{content:url('icons/device-desktop-24.svg');}
+.icon-device-mobile-16:before{content:url('icons/device-mobile-16.svg');}
+.icon-device-mobile-24:before{content:url('icons/device-mobile-24.svg');}
+.icon-diff-16:before{content:url('icons/diff-16.svg');}
+.icon-diff-24:before{content:url('icons/diff-24.svg');}
+.icon-diff-added-16:before{content:url('icons/diff-added-16.svg');}
+.icon-diff-ignored-16:before{content:url('icons/diff-ignored-16.svg');}
+.icon-diff-modified-16:before{content:url('icons/diff-modified-16.svg');}
+.icon-diff-removed-16:before{content:url('icons/diff-removed-16.svg');}
+.icon-diff-renamed-16:before{content:url('icons/diff-renamed-16.svg');}
+.icon-dot-16:before{content:url('icons/dot-16.svg');}
+.icon-dot-24:before{content:url('icons/dot-24.svg');}
+.icon-dot-fill-16:before{content:url('icons/dot-fill-16.svg');}
+.icon-dot-fill-24:before{content:url('icons/dot-fill-24.svg');}
+.icon-download-16:before{content:url('icons/download-16.svg');}
+.icon-download-24:before{content:url('icons/download-24.svg');}
+.icon-ellipsis-16:before{content:url('icons/ellipsis-16.svg');}
+.icon-eye-16:before{content:url('icons/eye-16.svg');}
+.icon-eye-24:before{content:url('icons/eye-24.svg');}
+.icon-eye-closed-16:before{content:url('icons/eye-closed-16.svg');}
+.icon-eye-closed-24:before{content:url('icons/eye-closed-24.svg');}
+.icon-file-16:before{content:url('icons/file-16.svg');}
+.icon-file-24:before{content:url('icons/file-24.svg');}
+.icon-file-badge-16:before{content:url('icons/file-badge-16.svg');}
+.icon-file-binary-16:before{content:url('icons/file-binary-16.svg');}
+.icon-file-binary-24:before{content:url('icons/file-binary-24.svg');}
+.icon-file-code-16:before{content:url('icons/file-code-16.svg');}
+.icon-file-code-24:before{content:url('icons/file-code-24.svg');}
+.icon-file-diff-16:before{content:url('icons/file-diff-16.svg');}
+.icon-file-diff-24:before{content:url('icons/file-diff-24.svg');}
+.icon-file-directory-16:before{content:url('icons/file-directory-16.svg');}
+.icon-file-directory-24:before{content:url('icons/file-directory-24.svg');}
+.icon-file-directory-fill-24:before{content:url('icons/file-directory-fill-24.svg');}
+.icon-file-media-24:before{content:url('icons/file-media-24.svg');}
+.icon-file-submodule-16:before{content:url('icons/file-submodule-16.svg');}
+.icon-file-submodule-24:before{content:url('icons/file-submodule-24.svg');}
+.icon-file-symlink-file-16:before{content:url('icons/file-symlink-file-16.svg');}
+.icon-file-symlink-file-24:before{content:url('icons/file-symlink-file-24.svg');}
+.icon-file-zip-16:before{content:url('icons/file-zip-16.svg');}
+.icon-file-zip-24:before{content:url('icons/file-zip-24.svg');}
+.icon-filter-16:before{content:url('icons/filter-16.svg');}
+.icon-filter-24:before{content:url('icons/filter-24.svg');}
+.icon-flame-16:before{content:url('icons/flame-16.svg');}
+.icon-flame-24:before{content:url('icons/flame-24.svg');}
+.icon-fold-16:before{content:url('icons/fold-16.svg');}
+.icon-fold-24:before{content:url('icons/fold-24.svg');}
+.icon-fold-down-16:before{content:url('icons/fold-down-16.svg');}
+.icon-fold-down-24:before{content:url('icons/fold-down-24.svg');}
+.icon-fold-up-16:before{content:url('icons/fold-up-16.svg');}
+.icon-fold-up-24:before{content:url('icons/fold-up-24.svg');}
+.icon-gear-16:before{content:url('icons/gear-16.svg');}
+.icon-gear-24:before{content:url('icons/gear-24.svg');}
+.icon-gift-16:before{content:url('icons/gift-16.svg');}
+.icon-gift-24:before{content:url('icons/gift-24.svg');}
+.icon-git-branch-16:before{content:url('icons/git-branch-16.svg');}
+.icon-git-branch-24:before{content:url('icons/git-branch-24.svg');}
+.icon-git-commit-16:before{content:url('icons/git-commit-16.svg');}
+.icon-git-commit-24:before{content:url('icons/git-commit-24.svg');}
+.icon-git-compare-16:before{content:url('icons/git-compare-16.svg');}
+.icon-git-compare-24:before{content:url('icons/git-compare-24.svg');}
+.icon-git-fork-24:before{content:url('icons/git-fork-24.svg');}
+.icon-git-merge-16:before{content:url('icons/git-merge-16.svg');}
+.icon-git-merge-24:before{content:url('icons/git-merge-24.svg');}
+.icon-git-pull-request-16:before{content:url('icons/git-pull-request-16.svg');}
+.icon-git-pull-request-24:before{content:url('icons/git-pull-request-24.svg');}
+.icon-globe-16:before{content:url('icons/globe-16.svg');}
+.icon-globe-24:before{content:url('icons/globe-24.svg');}
+.icon-grabber-16:before{content:url('icons/grabber-16.svg');}
+.icon-grabber-24:before{content:url('icons/grabber-24.svg');}
+.icon-graph-16:before{content:url('icons/graph-16.svg');}
+.icon-graph-24:before{content:url('icons/graph-24.svg');}
+.icon-heading-16:before{content:url('icons/heading-16.svg');}
+.icon-heading-24:before{content:url('icons/heading-24.svg');}
+.icon-heart-16:before{content:url('icons/heart-16.svg');}
+.icon-heart-24:before{content:url('icons/heart-24.svg');}
+.icon-heart-fill-16:before{content:url('icons/heart-fill-16.svg');}
+.icon-heart-fill-24:before{content:url('icons/heart-fill-24.svg');}
+.icon-history-16:before{content:url('icons/history-16.svg');}
+.icon-history-24:before{content:url('icons/history-24.svg');}
+.icon-home-16:before{content:url('icons/home-16.svg');}
+.icon-home-24:before{content:url('icons/home-24.svg');}
+.icon-home-fill-24:before{content:url('icons/home-fill-24.svg');}
+.icon-horizontal-rule-16:before{content:url('icons/horizontal-rule-16.svg');}
+.icon-horizontal-rule-24:before{content:url('icons/horizontal-rule-24.svg');}
+.icon-hourglass-16:before{content:url('icons/hourglass-16.svg');}
+.icon-hourglass-24:before{content:url('icons/hourglass-24.svg');}
+.icon-hubot-16:before{content:url('icons/hubot-16.svg');}
+.icon-hubot-24:before{content:url('icons/hubot-24.svg');}
+.icon-image-16:before{content:url('icons/image-16.svg');}
+.icon-image-24:before{content:url('icons/image-24.svg');}
+.icon-inbox-16:before{content:url('icons/inbox-16.svg');}
+.icon-inbox-24:before{content:url('icons/inbox-24.svg');}
+.icon-infinity-16:before{content:url('icons/infinity-16.svg');}
+.icon-infinity-24:before{content:url('icons/infinity-24.svg');}
+.icon-info-16:before{content:url('icons/info-16.svg');}
+.icon-info-24:before{content:url('icons/info-24.svg');}
+.icon-insights-24:before{content:url('icons/insights-24.svg');}
+.icon-issue-closed-16:before{content:url('icons/issue-closed-16.svg');}
+.icon-issue-closed-24:before{content:url('icons/issue-closed-24.svg');}
+.icon-issue-opened-16:before{content:url('icons/issue-opened-16.svg');}
+.icon-issue-opened-24:before{content:url('icons/issue-opened-24.svg');}
+.icon-issue-reopened-16:before{content:url('icons/issue-reopened-16.svg');}
+.icon-issue-reopened-24:before{content:url('icons/issue-reopened-24.svg');}
+.icon-italic-16:before{content:url('icons/italic-16.svg');}
+.icon-italic-24:before{content:url('icons/italic-24.svg');}
+.icon-kebab-horizontal-16:before{content:url('icons/kebab-horizontal-16.svg');}
+.icon-kebab-horizontal-24:before{content:url('icons/kebab-horizontal-24.svg');}
+.icon-key-16:before{content:url('icons/key-16.svg');}
+.icon-key-24:before{content:url('icons/key-24.svg');}
+.icon-law-16:before{content:url('icons/law-16.svg');}
+.icon-law-24:before{content:url('icons/law-24.svg');}
+.icon-light-bulb-16:before{content:url('icons/light-bulb-16.svg');}
+.icon-light-bulb-24:before{content:url('icons/light-bulb-24.svg');}
+.icon-link-16:before{content:url('icons/link-16.svg');}
+.icon-link-24:before{content:url('icons/link-24.svg');}
+.icon-link-external-16:before{content:url('icons/link-external-16.svg');}
+.icon-link-external-24:before{content:url('icons/link-external-24.svg');}
+.icon-list-ordered-16:before{content:url('icons/list-ordered-16.svg');}
+.icon-list-ordered-24:before{content:url('icons/list-ordered-24.svg');}
+.icon-list-unordered-16:before{content:url('icons/list-unordered-16.svg');}
+.icon-list-unordered-24:before{content:url('icons/list-unordered-24.svg');}
+.icon-location-16:before{content:url('icons/location-16.svg');}
+.icon-location-24:before{content:url('icons/location-24.svg');}
+.icon-lock-16:before{content:url('icons/lock-16.svg');}
+.icon-lock-24:before{content:url('icons/lock-24.svg');}
+.icon-logo-gist-16:before{content:url('icons/logo-gist-16.svg');}
+.icon-logo-github-16:before{content:url('icons/logo-github-16.svg');}
+.icon-mail-16:before{content:url('icons/mail-16.svg');}
+.icon-mail-24:before{content:url('icons/mail-24.svg');}
+.icon-mark-github-16:before{content:url('icons/mark-github-16.svg');}
+.icon-markdown-16:before{content:url('icons/markdown-16.svg');}
+.icon-megaphone-16:before{content:url('icons/megaphone-16.svg');}
+.icon-megaphone-24:before{content:url('icons/megaphone-24.svg');}
+.icon-mention-16:before{content:url('icons/mention-16.svg');}
+.icon-mention-24:before{content:url('icons/mention-24.svg');}
+.icon-meter-16:before{content:url('icons/meter-16.svg');}
+.icon-milestone-16:before{content:url('icons/milestone-16.svg');}
+.icon-milestone-24:before{content:url('icons/milestone-24.svg');}
+.icon-mirror-16:before{content:url('icons/mirror-16.svg');}
+.icon-mirror-24:before{content:url('icons/mirror-24.svg');}
+.icon-moon-16:before{content:url('icons/moon-16.svg');}
+.icon-moon-24:before{content:url('icons/moon-24.svg');}
+.icon-mortar-board-16:before{content:url('icons/mortar-board-16.svg');}
+.icon-mortar-board-24:before{content:url('icons/mortar-board-24.svg');}
+.icon-mute-16:before{content:url('icons/mute-16.svg');}
+.icon-mute-24:before{content:url('icons/mute-24.svg');}
+.icon-no-entry-16:before{content:url('icons/no-entry-16.svg');}
+.icon-no-entry-24:before{content:url('icons/no-entry-24.svg');}
+.icon-north-star-16:before{content:url('icons/north-star-16.svg');}
+.icon-north-star-24:before{content:url('icons/north-star-24.svg');}
+.icon-note-16:before{content:url('icons/note-16.svg');}
+.icon-note-24:before{content:url('icons/note-24.svg');}
+.icon-Nueva carpeta:before{content:url('icons/Nueva carpeta');}
+.icon-octoface-16:before{content:url('icons/octoface-16.svg');}
+.icon-octoface-24:before{content:url('icons/octoface-24.svg');}
+.icon-organization-16:before{content:url('icons/organization-16.svg');}
+.icon-organization-24:before{content:url('icons/organization-24.svg');}
+.icon-package-16:before{content:url('icons/package-16.svg');}
+.icon-package-24:before{content:url('icons/package-24.svg');}
+.icon-package-dependencies-16:before{content:url('icons/package-dependencies-16.svg');}
+.icon-package-dependencies-24:before{content:url('icons/package-dependencies-24.svg');}
+.icon-package-dependents-16:before{content:url('icons/package-dependents-16.svg');}
+.icon-package-dependents-24:before{content:url('icons/package-dependents-24.svg');}
+.icon-paintbrush-16:before{content:url('icons/paintbrush-16.svg');}
+.icon-paper-airplane-16:before{content:url('icons/paper-airplane-16.svg');}
+.icon-paper-airplane-24:before{content:url('icons/paper-airplane-24.svg');}
+.icon-pencil-16:before{content:url('icons/pencil-16.svg');}
+.icon-pencil-24:before{content:url('icons/pencil-24.svg');}
+.icon-people-16:before{content:url('icons/people-16.svg');}
+.icon-people-24:before{content:url('icons/people-24.svg');}
+.icon-person-16:before{content:url('icons/person-16.svg');}
+.icon-person-24:before{content:url('icons/person-24.svg');}
+.icon-pin-16:before{content:url('icons/pin-16.svg');}
+.icon-pin-24:before{content:url('icons/pin-24.svg');}
+.icon-play-16:before{content:url('icons/play-16.svg');}
+.icon-play-24:before{content:url('icons/play-24.svg');}
+.icon-plug-16:before{content:url('icons/plug-16.svg');}
+.icon-plug-24:before{content:url('icons/plug-24.svg');}
+.icon-plus-16:before{content:url('icons/plus-16.svg');}
+.icon-plus-24:before{content:url('icons/plus-24.svg');}
+.icon-plus-circle-16:before{content:url('icons/plus-circle-16.svg');}
+.icon-plus-circle-24:before{content:url('icons/plus-circle-24.svg');}
+.icon-project-16:before{content:url('icons/project-16.svg');}
+.icon-project-24:before{content:url('icons/project-24.svg');}
+.icon-prueba.html:before{content:url('icons/prueba.html');}
+.icon-pulse-16:before{content:url('icons/pulse-16.svg');}
+.icon-pulse-24:before{content:url('icons/pulse-24.svg');}
+.icon-question-16:before{content:url('icons/question-16.svg');}
+.icon-question-24:before{content:url('icons/question-24.svg');}
+.icon-quote-16:before{content:url('icons/quote-16.svg');}
+.icon-quote-24:before{content:url('icons/quote-24.svg');}
+.icon-reply-16:before{content:url('icons/reply-16.svg');}
+.icon-reply-24:before{content:url('icons/reply-24.svg');}
+.icon-repo-16:before{content:url('icons/repo-16.svg');}
+.icon-repo-24:before{content:url('icons/repo-24.svg');}
+.icon-repo-clone-16:before{content:url('icons/repo-clone-16.svg');}
+.icon-repo-forked-16:before{content:url('icons/repo-forked-16.svg');}
+.icon-repo-pull-16:before{content:url('icons/repo-pull-16.svg');}
+.icon-repo-push-16:before{content:url('icons/repo-push-16.svg');}
+.icon-repo-push-24:before{content:url('icons/repo-push-24.svg');}
+.icon-repo-template-16:before{content:url('icons/repo-template-16.svg');}
+.icon-repo-template-24:before{content:url('icons/repo-template-24.svg');}
+.icon-report-16:before{content:url('icons/report-16.svg');}
+.icon-report-24:before{content:url('icons/report-24.svg');}
+.icon-rocket-16:before{content:url('icons/rocket-16.svg');}
+.icon-rocket-24:before{content:url('icons/rocket-24.svg');}
+.icon-rss-16:before{content:url('icons/rss-16.svg');}
+.icon-rss-24:before{content:url('icons/rss-24.svg');}
+.icon-ruby-16:before{content:url('icons/ruby-16.svg');}
+.icon-ruby-24:before{content:url('icons/ruby-24.svg');}
+.icon-screen-full-16:before{content:url('icons/screen-full-16.svg');}
+.icon-screen-full-24:before{content:url('icons/screen-full-24.svg');}
+.icon-screen-normal-16:before{content:url('icons/screen-normal-16.svg');}
+.icon-screen-normal-24:before{content:url('icons/screen-normal-24.svg');}
+.icon-search-16:before{content:url('icons/search-16.svg');}
+.icon-search-24:before{content:url('icons/search-24.svg');}
+.icon-server-16:before{content:url('icons/server-16.svg');}
+.icon-server-24:before{content:url('icons/server-24.svg');}
+.icon-share-16:before{content:url('icons/share-16.svg');}
+.icon-share-24:before{content:url('icons/share-24.svg');}
+.icon-share-android-16:before{content:url('icons/share-android-16.svg');}
+.icon-share-android-24:before{content:url('icons/share-android-24.svg');}
+.icon-shield-16:before{content:url('icons/shield-16.svg');}
+.icon-shield-24:before{content:url('icons/shield-24.svg');}
+.icon-shield-check-16:before{content:url('icons/shield-check-16.svg');}
+.icon-shield-check-24:before{content:url('icons/shield-check-24.svg');}
+.icon-shield-lock-16:before{content:url('icons/shield-lock-16.svg');}
+.icon-shield-lock-24:before{content:url('icons/shield-lock-24.svg');}
+.icon-shield-x-16:before{content:url('icons/shield-x-16.svg');}
+.icon-shield-x-24:before{content:url('icons/shield-x-24.svg');}
+.icon-sign-in-16:before{content:url('icons/sign-in-16.svg');}
+.icon-sign-in-24:before{content:url('icons/sign-in-24.svg');}
+.icon-sign-out-16:before{content:url('icons/sign-out-16.svg');}
+.icon-sign-out-24:before{content:url('icons/sign-out-24.svg');}
+.icon-skip-16:before{content:url('icons/skip-16.svg');}
+.icon-skip-24:before{content:url('icons/skip-24.svg');}
+.icon-smiley-16:before{content:url('icons/smiley-16.svg');}
+.icon-smiley-24:before{content:url('icons/smiley-24.svg');}
+.icon-square-16:before{content:url('icons/square-16.svg');}
+.icon-square-24:before{content:url('icons/square-24.svg');}
+.icon-square-fill-16:before{content:url('icons/square-fill-16.svg');}
+.icon-square-fill-24:before{content:url('icons/square-fill-24.svg');}
+.icon-squirrel-16:before{content:url('icons/squirrel-16.svg');}
+.icon-star-16:before{content:url('icons/star-16.svg');}
+.icon-star-24:before{content:url('icons/star-24.svg');}
+.icon-star-fill-16:before{content:url('icons/star-fill-16.svg');}
+.icon-star-fill-24:before{content:url('icons/star-fill-24.svg');}
+.icon-stop-16:before{content:url('icons/stop-16.svg');}
+.icon-stop-24:before{content:url('icons/stop-24.svg');}
+.icon-stopwatch-16:before{content:url('icons/stopwatch-16.svg');}
+.icon-stopwatch-24:before{content:url('icons/stopwatch-24.svg');}
+.icon-sun-16:before{content:url('icons/sun-16.svg');}
+.icon-sun-24:before{content:url('icons/sun-24.svg');}
+.icon-sync-16:before{content:url('icons/sync-16.svg');}
+.icon-sync-24:before{content:url('icons/sync-24.svg');}
+.icon-tab-24:before{content:url('icons/tab-24.svg');}
+.icon-tag-16:before{content:url('icons/tag-16.svg');}
+.icon-tag-24:before{content:url('icons/tag-24.svg');}
+.icon-tasklist-16:before{content:url('icons/tasklist-16.svg');}
+.icon-tasklist-24:before{content:url('icons/tasklist-24.svg');}
+.icon-telescope-16:before{content:url('icons/telescope-16.svg');}
+.icon-telescope-24:before{content:url('icons/telescope-24.svg');}
+.icon-terminal-16:before{content:url('icons/terminal-16.svg');}
+.icon-terminal-24:before{content:url('icons/terminal-24.svg');}
+.icon-three-bars-16:before{content:url('icons/three-bars-16.svg');}
+.icon-thumbsdown-16:before{content:url('icons/thumbsdown-16.svg');}
+.icon-thumbsdown-24:before{content:url('icons/thumbsdown-24.svg');}
+.icon-thumbsup-16:before{content:url('icons/thumbsup-16.svg');}
+.icon-thumbsup-24:before{content:url('icons/thumbsup-24.svg');}
+.icon-tools-16:before{content:url('icons/tools-16.svg');}
+.icon-tools-24:before{content:url('icons/tools-24.svg');}
+.icon-trash-24:before{content:url('icons/trash-24.svg');}
+.icon-trashcan-16:before{content:url('icons/trashcan-16.svg');}
+.icon-triangle-down-16:before{content:url('icons/triangle-down-16.svg');}
+.icon-triangle-down-24:before{content:url('icons/triangle-down-24.svg');}
+.icon-triangle-left-16:before{content:url('icons/triangle-left-16.svg');}
+.icon-triangle-left-24:before{content:url('icons/triangle-left-24.svg');}
+.icon-triangle-right-16:before{content:url('icons/triangle-right-16.svg');}
+.icon-triangle-right-24:before{content:url('icons/triangle-right-24.svg');}
+.icon-triangle-up-16:before{content:url('icons/triangle-up-16.svg');}
+.icon-triangle-up-24:before{content:url('icons/triangle-up-24.svg');}
+.icon-typography-16:before{content:url('icons/typography-16.svg');}
+.icon-typography-24:before{content:url('icons/typography-24.svg');}
+.icon-unfold-16:before{content:url('icons/unfold-16.svg');}
+.icon-unfold-24:before{content:url('icons/unfold-24.svg');}
+.icon-unlock-16:before{content:url('icons/unlock-16.svg');}
+.icon-unlock-24:before{content:url('icons/unlock-24.svg');}
+.icon-unmute-16:before{content:url('icons/unmute-16.svg');}
+.icon-unmute-24:before{content:url('icons/unmute-24.svg');}
+.icon-unverified-16:before{content:url('icons/unverified-16.svg');}
+.icon-unverified-24:before{content:url('icons/unverified-24.svg');}
+.icon-upload-16:before{content:url('icons/upload-16.svg');}
+.icon-upload-24:before{content:url('icons/upload-24.svg');}
+.icon-verified-16:before{content:url('icons/verified-16.svg');}
+.icon-verified-24:before{content:url('icons/verified-24.svg');}
+.icon-versions-16:before{content:url('icons/versions-16.svg');}
+.icon-versions-24:before{content:url('icons/versions-24.svg');}
+.icon-workflow-16:before{content:url('icons/workflow-16.svg');}
+.icon-workflow-24:before{content:url('icons/workflow-24.svg');}
+.icon-x-16:before{content:url('icons/x-16.svg');}
+.icon-x-24:before{content:url('icons/x-24.svg');}
+.icon-x-circle-16:before{content:url('icons/x-circle-16.svg');}
+.icon-x-circle-24:before{content:url('icons/x-circle-24.svg');}
+.icon-x-circle-fill-16:before{content:url('icons/x-circle-fill-16.svg');}
+.icon-x-circle-fill-24:before{content:url('icons/x-circle-fill-24.svg');}
+.icon-zap-16:before{content:url('icons/zap-16.svg');}
+.icon-zap-24:before{content:url('icons/zap-24.svg');}
+[class*='icon']
+{
+	filter: brightness(0%) hue-rotate(360deg) saturate(1000%) contrast(1000%) invert(100%);
+	-webkit-filter: brightness(0%) hue-rotate(360deg) saturate(1000%) contrast(1000%) invert(100%);
+	-moz-filter: brightness(0%) hue-rotate(360deg) saturate(1000%) contrast(1000%) invert(100%);
+	position:relative;
+	top:4px;
+}
+.negro
+{
+	filter: none;
+	-webkit-filter: none;
+	-moz-filter: none;
+	position:relative;
+	top:4px;
+}
+
+.azul{
+	filter: brightness(200%);
+}
+
+.tooltipx {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipx .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 2071;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltipx .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltipx:hover .tooltiptext {
+  visibility: visible;
+}
+.navbar-collapse.collapsing,
+.navbar-collapse.collapse.show{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-fixed;
+}
+
+          .MostrarNombreXD{
+            display: inline-block;
+          }
+          .bg-630000{
+            background-color: #00212f;
+          }
+          .t-info{
+                display: block;
+          }
+          html {
+            scroll-behavior: smooth;
+          }
+          #contador{
+              font-size: 200%;
+          }
+          .centrar-verticalmente-con-el-video{
+              font-size: 34px;
+              position: relative;
+              text-shadow:5px 5px 5px black;
+            }
+          @media (min-width: 992px) {
+              .MostrarNombreXD{
+                display: none;
+              }
+              .grupo-pd{
+                padding-right:10px;
+              }
+          }
+          @media (max-width: 992px) {
+            .nav-item{
+              margin-right: 15px;
+              margin-left: 15px;
+            }
+            .navbar-nav{
+              display: inline-block;
+              background-color: rgb(0 72 103)!important;
+              z-index: 9999;
+            }
+            .navbar{
+              position: fixed;
+              top: 0;
+              right: 0;
+              left: 0;
+              z-index: 1030;
+            }
+            .t-info{
+                  display: none;
+            }
+          }
+          @media (max-width: 540px) {
+            .MostrarNombreXD small{
+              font-size: 50%;
+            }
+            .centrar-verticalmente-con-el-video b{
+              font-size: 50%;
+            }
+            #contador{
+              font-size: 100%;
+            }
+          }
+          @media (max-width: 330px) {
+            .MostrarNombreXD small{
+              font-size: 10%;
+            }
+          }
+          .navbar{
+            position: sticky;
+            background-color: rgb(0 72 103)!important;
+          }
+          .nav-link,.nav-item{
+            display: inline-block!important;
+            white-space:normal;
+          }
+          video{z-index: 1;}
+
+          .titulo{
+          	padding: 40px 55px 0px 55px;
+          	color: rgb(0, 109, 154);
+          	font-family: AmsiPro-SemiBold, sans-serif;
+          	background-image: url("icons/iconfinder.svg");
+          	background-size: 20px;
+          	background-repeat: no-repeat;
+          	background-position: 25px 60px;
+          	width: 100%;
+          }
+    .contenedorBoton{
+      margin-top: 15px;
+      padding: 25px;
+      text-align: center;
+    }
+    .contenedorBoton button,
+    .contenedorBoton a,
+    .contenedorBoton input[type="submit"]{
+      border-radius: 35px;
+      margin: 5px!important;
+      min-width: 280px;
+      min-height: 65px;
+      border:2px solid rgb(0 72 103);
+      border-top:0;
+      border-right:0;
+      font-weight: bold;
+    }
+
+    .contenedorBoton form{
+    	display: inline-block;
+    }
+
+    .contenedorBoton a.btn{
+    	padding-top: 17px;
+    }
+
+    .tarjeta{
+    	border:1px solid gray;background-color: white;
+    }
+.bg_final
+{
+    background-color: rgb(0 72 103)!important;
+}
+.color_final
+{
+    color: rgb(0 72 103)!important;
+}

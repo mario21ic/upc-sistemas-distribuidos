@@ -1,0 +1,2 @@
+module MovimimientoVentaHelper
+end

@@ -1,0 +1,35 @@
+<%= form_with(model: cliente, local: true) do |form| %>
+  <% if cliente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+
+      <ul>
+        <% cliente.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="form-row">
+      <%= render partial: '/personas/form', persona: @persona %>
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :estado, :class=>"col-form-label col-form-label-lg" %>
+        <select class="form-control form-control-lg mr-sm-2">
+          <option>[Seleccione]</option>
+          <option value="value1">Activo</option> 
+          <option value="value3">Inactivo</option>
+          <option value="value3">Falta Activar</option>
+        </select>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+  
+<div class="actions text-right">
+  <%= link_to 'Regresar', usuarios_path, :class => "btn-warning btn btn-lg" %>
+  <%= form.submit "Guardar", :class => "btn btn-lg btn-success text-light"%>
+</div>
+<% end %>

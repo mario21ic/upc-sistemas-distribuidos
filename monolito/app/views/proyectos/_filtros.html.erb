@@ -1,0 +1,49 @@
+
+  <div class="row">
+    <div class="col-md-8">
+      <input class="ctrlSearch form-control form-control-lg mr-sm-2" type="search" placeholder="Ingrese nombre del proyecto / Dirección" aria-label="Search" id="direccion">
+    </div>
+    <div class="col-md-4">
+      <%w = "tipo_variable= 'Estado Proyecto'"%>
+      <%if @ultimos == 'ultimos'%>
+        <%w = w + " and codigo_variable != 'I'"%>
+      <%end%>
+
+      <%= collection_select("estados", "id", @variables.where(w) , :codigo_variable, :descricion_variable, {:prompt => "Todos los estados"}, :id => 'estado', :class=>"ctrlSearch form-control form-control-lg mr-sm-2")  %>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-4">
+      <%= collection_select("departamentos_ubigeo", "id", @variables.where(tipo_variable: 'UbigeoDepartamentos') , :codigo_variable, :descricion_variable, {:prompt => "Todos los departamentos"}, :id => 'departamento', :class=>"ctrlSearch form-control mr-sm-2")  %>
+    </div>
+    <div class="col-md-4">
+      <%= collection_select("provincias", "id", @variables.where(tipo_variable: 'UbigeoProvincias') , :codigo_variable, :descricion_variable, {:prompt => "Todas las provincias"}, :id => 'provincia', :class=>"ctrlSearch form-control mr-sm-2")  %>
+    </div>
+    <div class="col-md-4">
+      <%= collection_select("distritos", "id", @variables.where(tipo_variable: 'UbigeoDistritos') , :codigo_variable, :descricion_variable, {:prompt => "Todos los distritos"}, :id => 'distrito', :class=>"ctrlSearch form-control mr-sm-2")  %>
+    </div>
+    <%= render '/departamentos/filtros', departamento: @departamento %>
+  </div>
+  <div class="contenedorBoton">
+      <button class="btn btn-success my-sm-0 btn-lg" buscar><i class="icon-search-24"></i> Buscar</button>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('[buscar]').on('click', function() {
+            x='x=x';
+            $('.ctrlSearch').each((a,b)=>{x=x+'&'+b.id+'='+b.value});
+            window.open('/<%=@ultimos%>_proyectos/buscar?'+x,'_top');
+          });
+          window.location.search.split('?')[1].split('&').map(x=>{c=document.getElementById(x.split("=")[0]);v=x.split("=")[1];if (c&&v)c.value = v})
+        });
+      </script>
+
+      <% if @home != 'S'%>
+        <%= button_to(new_proyecto_path, :class => "btn my-sm-0 btn-lg btn-primary text-light") do %>
+          <i class="icon-plus-24"></i> Nuevo Proyecto
+        <%end%>
+      <% end %>
+
+      <button class="btn btn-warning my-sm-0 btn-lg" id="limpiar"><i class="icon-circle-slash-24 negro"></i> Limpiar</button>
+  </div>
+  <%= render '/proyectos/ubigeo'%>

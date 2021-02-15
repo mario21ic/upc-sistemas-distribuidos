@@ -1,0 +1,78 @@
+<p id="notice"><%= notice %></p>
+<%= content_for :head do %>
+  <br/>
+  <div class="row bd-example">
+    <div class="col-md-12 mb-2">
+      <h1 class="display-1">Reporte</h1>
+    </div>
+  </div>
+<% end %>
+  <div class="row mt-4">
+    <div class="col-md-8">
+      <input class="form-control form-control-lg mr-sm-2" type="search" placeholder="Ingrese nombre del proyecto o dirección" aria-label="Search">
+    </div>
+    <div class="col-md-4">
+      <select class="form-control form-control-lg mr-sm-2">
+        <option>Todos los estados</option>
+        <option value="value1">Activo</option> 
+        <option value="value3">Inactivo</option>
+        <option value="value3">Vendido con Deuda</option>
+        <option value="value3">Vendido sin Deuda</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-md-6 text-right">
+    </div>
+    <div class="col-md-2 text-right">
+      <button class="form-control btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+    </div>
+    <div class="col-md-2 text-right">
+      <button class="form-control btn btn-primary my-2 my-sm-0" type="submit">Exportar</button>
+    </div>
+    <div class="col-md-2">
+      <button class="form-control btn btn-warning my-2 my-sm-0" type="submit">Limpiar</button>
+    </div>
+  </div>
+
+    <% @departamentos.each do |departamento| %>
+      <div class="card mt-4">
+        <div class="col-md-12">
+            <div class="card-header row text-light bg-secondary">
+              <div class="col-md-3">
+                Proyecto: <b>Paso 28 de Julio</b>
+              </div>
+              <div class="col-md-6">
+                Departamento: <b><%= departamento.numero %></b>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Estado:</b> <%= departamento.estado %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Precio Venta:</b> $200 000.00
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Pagado:</b> $100 000.00
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Saldo:</b> $100 000.00
+              </div>
+            </div>
+        </div>
+      </div>
+
+    <% end %>
+
+
+<%= render partial: '/layouts/paginacion'%>

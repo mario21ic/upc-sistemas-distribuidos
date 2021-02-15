@@ -1,0 +1,20 @@
+<% if @home_depa != 'S' || p.mca_favorito == 'S'%>
+	<span class="badge badge-info badge-pill border border-success bg_final" style="border-top-left-radius: 0;">
+		<table style="height: 30px">
+			<tr>
+				<td class="align-middle" style="padding: 0;">
+						&nbsp;
+						<%= @variables.select(:descricion_variable).where(tipo_variable: 'Estado ' + estado, codigo_variable: p.estado).collect(&:descricion_variable)[0] %>
+					&nbsp;
+				</td>
+				<td class="align-middle" style="padding: 0;">
+		           <% if p.mca_favorito == 'S'%>
+		             <span class="card-text text-warning h4" title="Marcado como favorito.">★</span>
+		             &nbsp;
+		           <% end %>
+				</td>
+			</tr>
+		</table>
+			
+	</span>
+<% end %>

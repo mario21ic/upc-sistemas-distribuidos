@@ -1,0 +1,81 @@
+<p id="notice"><%= notice %></p>
+<%= content_for :head do %>
+  <br/>
+  <div class="row bd-example">
+    <div class="col-md-9 mb-2">
+      <h1 class="display-1">Citas</h1>
+    </div>
+    <div class="col-md-3 text-right mb-2">
+      <br/>
+      <br/>
+      <%= link_to 'Nueva Cita', new_citum_path, :class => "form-control btn btn-lg btn-outline-primary text-primary" %>
+    </div>
+  </div>
+<% end %>
+<br>
+
+    <% @citas.each do |citum| %>
+      <div class="card mt-2">
+        <div class="col-md-12">
+            <div class="card-header row  bg-secondary text-light">
+              <div class="col-md-11">
+                <strong>Fecha y Hora:</strong> 
+                <%= citum.fecha %>
+              </div>
+              <div class="col-md-1 text-right">
+                <span class="badge badge-primary badge-pill">Atendido</span>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+              <div class="card-body pb-0">
+                <b>Solicitud id:</b>
+                <%= citum.solicitud_id %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-body pb-0">
+                <b>Cliente:</b>
+                <%= Solicitud.select(:nombres).where("id = " + citum.solicitud_id.to_s).collect(&:nombres)[0] %>
+                <%= Solicitud.select(:apellidos).where("id = " + citum.solicitud_id.to_s).collect(&:apellidos)[0] %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-body pb-0">
+                <b>DNI Cliente:</b> 
+                <%= Solicitud.select(:numero_documento).where("id = " + citum.solicitud_id.to_s).collect(&:numero_documento)[0] %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-body pb-0">
+                <b>Telefono:</b>
+                <%= Solicitud.select(:telefono).where("id = " + citum.solicitud_id.to_s).collect(&:telefono)[0] %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-body pb-0">
+                <b>Email Cliente:</b>
+                <%= Solicitud.select(:correo).where("id = " + citum.solicitud_id.to_s).collect(&:correo)[0] %>
+              </div>
+            </div>
+            <div class="col-md-12 text-right mb-3">
+                  <%= link_to 'Detalles', citum, :class => "btn-success btn-sm text-light mr-3" %>
+                  <%= link_to 'Editar', edit_citum_path(citum), :class => "btn-warning btn-sm text-light mr-3" %>
+                  <%= link_to 'Eliminar', citum, method: :delete, data: { confirm: 'Esta seguro de eliminar?' }, :class => "btn-danger btn-sm text-light mr-3" %></td>
+            </div>
+        </div>
+      </div>
+
+    <% end %>
+
+<br>
+<br>
+
+<div class="digg_pagination">
+  <%= will_paginate @citas %>
+</div>
+
+<!--
+<%= link_to 'Nueva Cita', new_citum_path %>
+-->

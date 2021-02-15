@@ -1,0 +1,2 @@
+class CaracteristicasProyecto < ApplicationRecord
+end

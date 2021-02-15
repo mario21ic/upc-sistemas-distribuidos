@@ -1,0 +1,67 @@
+<%= form_with(model: movimimiento_ventum, local: true) do |form| %>
+  <% if movimimiento_ventum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(movimimiento_ventum.errors.count, "error") %> prohibited this movimimiento_ventum from being saved:</h2>
+
+      <ul>
+        <% movimimiento_ventum.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :numero_movimiento %>
+    <%= form.number_field :numero_movimiento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cod_venta %>
+    <%= form.number_field :cod_venta %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo_movimiento %>
+    <%= form.text_field :tipo_movimiento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :numero_operacion %>
+    <%= form.text_field :numero_operacion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :monto %>
+    <%= form.text_field :monto %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado %>
+    <%= form.text_field :estado %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usu_crea %>
+    <%= form.text_field :usu_crea %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fec_crea %>
+    <%= form.datetime_select :fec_crea %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usu_mod %>
+    <%= form.text_field :usu_mod %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fec_mod %>
+    <%= form.datetime_select :fec_mod %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

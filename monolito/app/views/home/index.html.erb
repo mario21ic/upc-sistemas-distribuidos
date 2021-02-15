@@ -1,0 +1,70 @@
+<%= content_for :pre_head do %>
+      <div class="wrap-video"> 
+        <video class="elementor-background-video-hosted elementor-html5-video" autoplay="" muted="" playsinline="" loop="" src="https://centenario.com.pe/wp-content/uploads/2020/05/corporativo_vid_resumen_v2.mp4#t=0.4" style="width: 100%;"></video>
+        
+        <div class="text-white text-center centrar-verticalmente-con-el-video" style="display: none;">
+          <b>¡Más de</b><br/>
+          <b id="contador">0</b><br/>
+          <b>ventas exitosas!</b>
+        </div>
+      </div>
+        <script type="text/javascript">
+          $(window).scrollTop($('body').offset().top,'slow');
+          $( window ).on( "load",function(){
+            $(window).scrollTop($('body').offset().top,'slow');
+          });
+          $( window ).ready(function(){
+            $(window).scrollTop($('body').offset().top,'slow');
+              setTimeout(function(){
+                $(window).scrollTop($('body').offset().top,'slow');
+
+                (function(cc){
+                  cc.show();
+                  const h = $('video').outerHeight(true);
+                  $('.wrap-video').outerHeight(h);
+                  cc.css('top',(-(cc.outerHeight()/2+h/2))+'px');
+                })($('.centrar-verticalmente-con-el-video'));
+
+                (function(fn){
+                  fn(fn,0);
+                })(function(fn,x){
+                  if(x<=22000)
+                  {
+                    $('#contador').html(x);
+                    x=x+Math.floor(Math.random() * 490);
+                    setTimeout(function(){
+                      fn(fn,x);
+                    },20);
+                  }
+                  else
+                    setTimeout(function(){
+                                    $(window).scrollTop($('div[id=inicio]').offset().top - 40,'slow');
+                                  },2000);
+                });
+
+
+              },100);
+          });
+        </script>
+<% end %>
+<%= content_for :titulo do %>
+     <i class="icon-iconfinder azul"></i>
+     ¡Vive en lo mejor!
+<% end %>
+  
+<% @home = 'S'%>
+<%= render '/proyectos/filtros'%>
+
+<div class="row"> 
+  <h1 class="display-4 titulo"> Proyectos Destacados</h1>
+</div>
+
+<% @home_depa = 'S' %>
+<%= render '/proyectos/item', proyectos: @proyectos %>
+
+<div class="row">
+  <h1 class="display-4 titulo"> Departamentos Destacados</h1>
+</div>
+
+<%= render '/departamentos/item', departamentos: @departamentos.where(mca_favorito: 'S')%>
+

@@ -1,0 +1,75 @@
+<%= form_with(model: proforma, local: true) do |form| %>
+  <% if proforma.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(proforma.errors.count, "error") %> prohibited this proforma from being saved:</h2>
+
+      <ul>
+        <% proforma.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :solicitud_id %>
+
+    <div class="form-row">
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Nombres:</label>
+        <%= form.text_field :nombres, :class=>"form-control form-control-lg mr-sm-2"%>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Apellidos:</label>
+        <%= form.text_field :apellidos, :class=>"form-control form-control-lg mr-sm-2"%>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">DNI:</label>
+        <%= form.text_field :dni, :class=>"form-control form-control-lg mr-sm-2"%>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Correo:</label>
+        <%= form.text_field :correo, :class=>"form-control form-control-lg mr-sm-2"%>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Telefono:</label>
+        <%= form.text_field :telefono, :class=>"form-control form-control-lg mr-sm-2"%>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Costo:</label>
+        <%= form.text_field :costo_base, :class=>"form-control form-control-lg mr-sm-2"%>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Descuento:</label>
+        <%= form.text_field :descuento, :class=>"form-control form-control-lg mr-sm-2"%>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Costo final:</label>
+        <%= form.text_field :costo_final, :class=>"form-control form-control-lg mr-sm-2"%>
+      </div>
+    </div>
+
+    <!---
+<div class="form-row">
+  <div class="col-md-4 mb-3 field">
+    <%= form.label :estado, :class => "col-form-label col-form-label-lg" %>
+    
+    <%= form.text_field :estado, :class => "col-form-label col-form-label-lg" %>
+    <select name="proforma[estado]" id="proforma_estado" class="form-control form-control-lg mr-sm-2">
+          <option>[Seleccione]</option>
+          <option value="Pendiente">Pendiente</option> 
+          <option value="Atendido">Atendido</option>
+    </select>
+  </div>
+</div>
+    -->
+
+  <div class="actions text-left">
+    <%= form.submit "Guardar", :class => "btn btn-lg btn-success text-light" %>
+  </div>
+<% end %>

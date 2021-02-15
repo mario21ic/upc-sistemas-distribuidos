@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tipo documento:</strong>
+  <%= @cliente.tipo_documento %>
+</p>
+
+<p>
+  <strong>Numero documento:</strong>
+  <%= @cliente.numero_documento %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @cliente.estado %>
+</p>
+
+<p>
+  <strong>Usu crea:</strong>
+  <%= @cliente.usu_crea %>
+</p>
+
+<p>
+  <strong>Fec crea:</strong>
+  <%= @cliente.fec_crea %>
+</p>
+
+<p>
+  <strong>Usu mod:</strong>
+  <%= @cliente.usu_mod %>
+</p>
+
+<p>
+  <strong>Fec mod:</strong>
+  <%= @cliente.fec_mod %>
+</p>
+
+<%= link_to 'Edit', edit_cliente_path(@cliente) %> |
+<%= link_to 'Back', clientes_path %>

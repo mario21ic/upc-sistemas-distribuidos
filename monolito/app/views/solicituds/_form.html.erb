@@ -1,0 +1,77 @@
+<%= form_with(model: solicitud, local: true) do |form| %>
+  <% if solicitud.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(solicitud.errors.count, "error") %> prohibited this solicitud from being saved:</h2>
+
+      <ul>
+        <% solicitud.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-row">
+  <%= form.hidden_field :departamento_id %>
+
+  <div class="col-md-4 mb-3 field">
+    <label class="col-form-label col-form-label-lg">DNI</label>
+    <%= form.text_field :numero_documento, :class=>"form-control form-control-lg mr-sm-2"%>
+  </div>
+
+  <div class="col-md-4 mb-3 field">
+    <label class="col-form-label col-form-label-lg">Nombres</label>
+    <%= form.text_field :nombres, :class=>"form-control form-control-lg mr-sm-2"%>
+  </div>
+
+  <div class="col-md-4 mb-3 field">
+    <label class="col-form-label col-form-label-lg">Apellidos</label>
+    <%= form.text_field :apellidos, :class=>"form-control form-control-lg mr-sm-2"%>
+  </div>
+
+  <div class="col-md-4 mb-3 field">
+    <label class="col-form-label col-form-label-lg">Correo</label>
+    <%= form.email_field :correo, :class=>"form-control form-control-lg mr-sm-2"%>
+  </div>
+
+  <div class="col-md-4 mb-3 field">
+    <label class="col-form-label col-form-label-lg">Teléfono</label>
+    <%= form.text_field :telefono, :class=>"form-control form-control-lg mr-sm-2"%>
+  </div>
+
+  <div class="col-md-4 mb-3 field">
+    <label class="col-form-label col-form-label-lg">Mensaje</label>
+    <%= form.text_area :mensaje, :class=>"form-control form-control-lg mr-sm-2", :placeholder => "Requiero informacion" %>
+  </div>
+
+  </div>  
+  <div class="actions text-left">
+    <!--
+  <%= link_to 'Regresar', solicituds_path, :class => "btn-warning btn btn-lg" %>
+    -->
+  <%= form.submit "Enviar solicitud", :class => "btn btn-lg btn-success text-light"%>
+  </div>
+</div>
+  <!--
+  <div class="field">
+    <%= form.label :usu_crea %>
+    <%= form.text_field :usu_crea %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fec_crea %>
+    <%= form.datetime_select :fec_crea %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usu_mod %>
+    <%= form.text_field :usu_mod %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fec_mod %>
+    <%= form.datetime_select :fec_mod %>
+  </div>
+  -->
+
+<% end %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @separar.nombres %>
+</p>
+
+<p>
+  <strong>Apelidos:</strong>
+  <%= @separar.apellidos %>
+</p>
+
+<p>
+  <strong>DNI:</strong>
+  <%= @separar.dni %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @separar.correo %>
+</p>
+
+<p>
+  <strong>Voucher:</strong>
+  <%= @separar.voucher %>
+</p>
+
+<p>
+  <strong>Monto:</strong>
+  <%= @separar.monto %>
+</p>
+
+<p>
+  <strong>Creado:</strong>
+  <%= @separar.created_at %>
+</p>
+
+<%= link_to 'Editar', edit_separar_path(@separar), :class => "btn btn-lg btn-warning text-light" %> &nbsp;
+<%= link_to 'Atras', separars_path, :class => "btn btn-lg btn-success text-light" %>

@@ -1,0 +1,116 @@
+<script>
+$(document).ready(function(){
+    $('#ventum_tipo_compra').change(function() {
+        var tipo = $('#ventum_tipo_compra').val();
+        //alert("cambio: " + tipo);
+        console.log("cambio: " + tipo);
+        // Si es al contado poner operacion bancaria y monto
+        if (tipo == "Al Contado") {
+            $('#div_operacion_bancaria').show();
+            $("#monto_lbl").text("Monto Total");
+        } else {
+            $('#div_operacion_bancaria').hide();
+        }
+        // Si es Financiado por Banco debe pagar el 10%
+        if (tipo == "Financiado") {
+            $('#div_financiado').show();
+            $("#monto_lbl").text("Monto 10%");
+        } else {
+            $('#div_financiado').hide();
+        }
+      //$('.menu').toggle("slide");
+    });
+});
+</script>
+
+<%= form_with(model: ventum, local: true) do |form| %>
+  <% if ventum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ventum.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+      <ul>
+        <% ventum.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="form-row">
+      <%= form.hidden_field :departamento_id %>
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :tipo_compra, "Tipo", :class=>"col-form-label col-form-label-lg" %>
+        <%= form.select :tipo_compra,  options_for_select(["Seleccione", "Al Contado", "Financiado"]), {}, { class: "form-control form-control-lg mr-sm-2" } %>
+      </div>
+
+      <div class="col-md-4 mb-3 field" id="div_operacion_bancaria">
+        <%= form.label :operacion_bancaria, "Nro Operacion bancaria", :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :operacion_bancaria, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3 field" id="div_financiado">
+        <%= form.label :financiado, "Financiamiento Bancario", :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :financiado, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :monto, "Monto", :class=>"col-form-label col-form-label-lg", :id=> "monto_lbl" %>
+        <%= form.text_field :monto, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :nombres, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :nombres, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :apellidos, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :apellidos, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :numero_documento, "DNI", :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :numero_documento, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :correo, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.email_field :correo, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :telefono, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.text_field :telefono, :class=>"form-control form-control-lg mr-sm-2" %>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="actions text-right">
+      <%= form.submit "Guardar", :class => "btn btn-lg btn-success text-light"%>
+      <%= link_to 'Cancelar', departamentos_path, :class => "btn-warning btn btn-lg"%>
+    </div>
+  </div>
+
+<% end %>

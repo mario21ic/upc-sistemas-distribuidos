@@ -1,0 +1,67 @@
+<%= form_with(model: citum, local: true) do |form| %>
+  <% if citum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(citum.errors.count, "error") %> prohibited this citum from being saved:</h2>
+
+      <ul>
+        <% citum.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-row">
+  <%= form.hidden_field :solicitud_id %>
+
+  <div class="col-md-4 mb-3 field">
+    <label class="col-form-label col-form-label-lg">Fecha</label>
+    <%= form.datetime_select :fecha, :class => "form-control form-control-lg mr-sm-2" %>
+  </div>
+</div>
+
+    <div class="form-row">
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Cliente:</label>
+        <%= Solicitud.select(:nombres).where("id = " + citum.solicitud_id.to_s).collect(&:nombres)[0] %>
+        <%= Solicitud.select(:apellidos).where("id = " + citum.solicitud_id.to_s).collect(&:apellidos)[0] %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">DNI:</label>
+        <%= Solicitud.select(:numero_documento).where("id = " + citum.solicitud_id.to_s).collect(&:numero_documento)[0] %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Correo:</label>
+        <%= Solicitud.select(:correo).where("id = " + citum.solicitud_id.to_s).collect(&:correo)[0] %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3 field">
+        <label class="col-form-label col-form-label-lg">Telefono:</label>
+        <%= Solicitud.select(:telefono).where("id = " + citum.solicitud_id.to_s).collect(&:telefono)[0] %>
+      </div>
+    </div>
+
+    <!---
+<div class="form-row">
+  <div class="col-md-4 mb-3 field">
+    <%= form.label :estado, :class => "col-form-label col-form-label-lg" %>
+    
+    <%= form.text_field :estado, :class => "col-form-label col-form-label-lg" %>
+    <select name="citum[estado]" id="citum_estado" class="form-control form-control-lg mr-sm-2">
+          <option>[Seleccione]</option>
+          <option value="Pendiente">Pendiente</option> 
+          <option value="Atendido">Atendido</option>
+    </select>
+  </div>
+</div>
+    -->
+
+  <div class="actions text-left">
+    <%= form.submit "Guardar", :class => "btn btn-lg btn-success text-light" %>
+  </div>
+<% end %>

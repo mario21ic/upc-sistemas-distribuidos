@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo_variable: MyString
+  codigo_variable: MyString
+  descricion_variable: MyString
+  dato_extra: MyString
+  dato_extra2: MyString
+  dato_extra3: MyString
+  estado: MyString
+  usu_crea: MyString
+  fec_crea: 2020-11-12 01:33:36
+  usu_mod: MyString
+  fec_mod: 2020-11-12 01:33:36
+
+two:
+  tipo_variable: MyString
+  codigo_variable: MyString
+  descricion_variable: MyString
+  dato_extra: MyString
+  dato_extra2: MyString
+  dato_extra3: MyString
+  estado: MyString
+  usu_crea: MyString
+  fec_crea: 2020-11-12 01:33:36
+  usu_mod: MyString
+  fec_mod: 2020-11-12 01:33:36

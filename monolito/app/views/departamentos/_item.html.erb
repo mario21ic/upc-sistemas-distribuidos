@@ -1,0 +1,100 @@
+<div class="row mt-4">
+  <% departamentos.each do |departamento| %>
+    <div class="col-md-4">
+      <div class="mb-3 tarjeta">
+        <table style="height: 300px;width: 100%;border:0;padding: 0;">
+          <tr>
+            <td style="text-align: center;padding: 0;">
+              <%f = @variables.select(:id).where(tipo_variable: 'SiNo', codigo_variable: 'S').collect(&:id)[0] %>
+              <%img = @archivos.select(:nombre_archivo).where(cod_proyecto: departamento.cod_proyecto, cod_departamento: departamento.id, cod_tip_archivo: f).collect(&:nombre_archivo)[0] %>
+              <%img_id = @archivos.select(:id).where(cod_proyecto: departamento.cod_proyecto, cod_departamento: departamento.id, cod_tip_archivo: f).collect(&:id)[0].to_s %>
+              <%if img%>
+                <img src="/uploads/archivo/nombre_archivo/<%=img_id+"/"+img.to_s.split('/').last%>" style="min-height: 300px;width: 100%;">
+              <%else%>
+                <img src="/assets/panel/LOGOHOME-be442d2e24dbf568d7c3b886f7162956d640b23c7efc7433a168a257767f9133.png" style="width: 20%;">
+              <%end%>
+            </td>
+          </tr>
+        </table>
+
+        <div class="row no-gutters">
+            <div class="card-body" style="padding-top: 10px;padding-bottom: 10px;">
+              <div class="row" style="min-height: 100px; overflow: hidden;">
+                <div class="col-md-12 text-right" style="position: absolute; top:25px; left: -25px">
+                  <%= render '/proyectos/estado_favorito', p: departamento, estado: 'Departamento'%>
+                </div>
+                <div class="col-md-12 text-center col-form-label-lg color_final">
+                      <% precio_final = 0%>
+                      <% def calculaPrecio(proyecto,departamento)%>
+                          <% precio = proyecto.precio_m2 * departamento.area_total %>
+                          <% porcentaje_tmp = (departamento.piso - 1)/100 %>
+                          <% precio = precio - (precio*porcentaje_tmp) %>
+                      <% end %>
+                      <% if @proyectos%>
+                        <% @proyectos.where(id: departamento.cod_proyecto).each do |proyecto| %>
+                          <% precio_final = calculaPrecio(proyecto,departamento) %>
+                        <% end %>
+                      <% else %>
+                          <% precio_final = calculaPrecio(@proyecto,departamento) %>
+                      <% end %>
+                  <h2> $ <%= number_to_currency(precio_final, {:precision => 0, :unit => "", :delimiter => ","})  %>* </h2>
+                </div>
+                <div class="col-md-12 text-center color_final border-top" style="padding:15px;">
+                  <%= departamento.descripcion_corta %>
+                </div>
+              </div>
+              <div class="row border-top border-info bg-info text-light" style="padding-top: 20px;padding-bottom: 20px;">
+                <div class="col-md-3 text-right mt-1">
+                  <p class="card-text"><small>Dormitorios :</small></p>
+                </div>
+                <div class="col-md-3">
+                  <b class="ml-1"><%= number_to_currency(departamento.dormitorios, {:precision => 0, :unit => "", :delimiter => ","}) %></b>
+                </div>
+                <div class="col-md-3 text-right mt-1">
+                   <p class="card-text"><small>Baños :</small></p>
+                </div>
+                <div class="col-md-3">
+                  <b class="ml-1"><%= number_to_currency(departamento.baños, {:precision => 0, :unit => "", :delimiter => ","}) %></b>
+                </div>
+                <div class="col-md-3 text-right mt-1">
+                  <p class="card-text"><small>Area Techada :</small></p>
+                </div>
+                <div class="col-md-3">
+                  <b class="ml-1"><%= number_to_currency(departamento.area_techada, {:precision => 0, :unit => "", :delimiter => ","}) %> m²</b>
+                </div>
+                <div class="col-md-3 text-right mt-1">
+                   <p class="card-text"><small>Area Total :</small></p>
+                </div>
+                <div class="col-md-3">
+                  <b class="ml-1"><%= number_to_currency(departamento.area_total, {:precision => 0, :unit => "", :delimiter => ","}) %> m²</b>
+                </div>
+                <div class="col-md-3 text-right mt-1">
+                  <p class="card-text"><small>Piso :</small></p>
+                </div>
+                <div class="col-md-3" >
+                  <b class="ml-1"><%= departamento.piso %></b>
+                </div>
+                <div class="col-md-3 text-right mt-1">
+                  <p class="card-text"><small>Número Dpto:</small></p>
+                </div>
+                <div class="col-md-3">
+                  <b class="ml-1"><%= departamento.numero %></b> 
+                </div>
+                <div class="col-md-12 text-right card-text mt-2 bg-info">
+                  <br>
+                    <a class="btn-success btn-sm text-light" href="/departamentos/<%= departamento.id.to_s + (@home?+'/home':'')%>">Ver más</a>
+                    &nbsp;
+                    <% if @home != 'S'%>
+                      <%= link_to 'Editar', edit_departamento_path(departamento), :class => "btn-danger btn-sm text-light" %>
+                    <% end %>
+                </div>
+              </div>
+              <div class="row bg-info">
+                
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

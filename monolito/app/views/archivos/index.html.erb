@@ -1,0 +1,51 @@
+<%= content_for :titulo do %>
+     Fotos
+<% end %>
+
+  <div class="contenedorBoton">
+        <%= link_to(proyecto_path(@proyecto), :class => "btn my-sm-0 btn-lg btn-warning text-light") do %>
+          <i class="icon-arrow-left-24"></i> Regresar
+        <%end%>
+        <%id_dep = 0%>
+        <%if @departamento %>
+          <%id_dep = @departamento.id%>
+        <%end %>
+          <a class="btn btn-primary btn-lg text-light" href="/archivos/<%= @proyecto.id%>/<%= id_dep%>/new">
+              <i class="icon-image-24"></i>
+              Nuevo Archivo
+          </a>
+
+  </div>
+
+<div class="row mt-4">
+
+  <% @archivos.each do |archivo| %>
+    <div class="col-md-4">
+      <div class="mb-3 border boder-secondary bg-white">
+        <div class="row no-gutters">
+          <div class="col-md-12 text-center border boder-secondary" style="overflow:hidden;">
+              <%= image_tag archivo.nombre_archivo.url, :style=>"max-height: 300px;width: auto;"%>
+          </div>
+          <div class="col-12 text-right">
+              <%= @variables.select(:descricion_variable).where(tipo_variable: 'Estado', codigo_variable: archivo.estado).collect(&:descricion_variable)[0] %>
+              <%f = @variables.select(:codigo_variable).where(tipo_variable: 'SiNo', id: archivo.cod_tip_archivo).collect(&:codigo_variable)[0] %>
+              <% if f == 'S'%>
+                 <span class="card-text text-warning h4" title="Marcado como favorito.">★</span>
+                 &nbsp;
+               <% end %>
+            </span>
+          </div>
+          <div class="col-md-12 text-justify col-form-label-lg">
+             <p class="card-text card-body" style="padding:0 20px 0 20px;"><b><%= archivo.descripcion_corta %></b></p>
+             <p class="card-text card-body" style="padding:0 20px 0 20px; min-height: 60px;"><%= archivo.descripcion_larga %></p>
+          </div>
+          <div class="col-md-12 text-right mt-3 mb-3 mr-2">
+                  <%= link_to 'Editar', edit_archivo_path(archivo), :class => "btn-danger btn-sm text-light mr-3" %>
+          </div>
+        </div>
+      </div>  
+    </div>
+  <% end %>
+</div>
+
+

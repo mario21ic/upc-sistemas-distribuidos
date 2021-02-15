@@ -1,0 +1,2 @@
+module CaracteristicasProyectosHelper
+end

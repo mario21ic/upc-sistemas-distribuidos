@@ -1,0 +1,105 @@
+<p id="notice"><%= notice %></p>
+
+
+  <div class="form-group row">
+  
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><strong>Tipo de Documento</strong></label>
+  
+  <div class="col-sm-3">
+  <div class="form-control" id="inputEmail3">
+  <%= @usuario.tipo_doc %>
+  </div>
+  </div>
+  </div>
+
+
+
+  <div class="form-group row">
+  
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><strong>Numero de Documento</strong></label>
+  
+  <div class="col-sm-3">
+  <div class="form-control" id="inputEmail3">
+  <%= @usuario.numero_documento %>
+  </div>
+  </div>
+  </div>
+  
+
+  <div class="form-group row">
+  
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><strong>Nombre</strong></label>
+  
+  <div class="col-sm-3">
+  <div class="form-control" id="inputEmail3">
+  <%= @usuario.nombre %>
+  </div>
+  </div>
+  </div>
+
+  <div class="form-group row">
+  
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><strong>Apellido Paterno</strong></label>
+  
+  <div class="col-sm-3">
+  <div class="form-control" id="inputEmail3">
+  <%= @usuario.apellido %>
+  </div>
+  </div>
+  </div>
+
+  
+  <div class="form-group row">
+  
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><strong>Apellido Materno</strong></label>
+  
+  <div class="col-sm-3">
+  <div class="form-control" id="inputEmail3">
+  <%= @usuario.apellido_materno %>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="form-group row">
+  
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><strong>Contraseña</strong></label>
+  
+  <div class="col-sm-3">
+  <div class="form-control" id="inputEmail3">
+  <%= @usuario.contraseña %>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="form-group row">
+  
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><strong>Correo corporativo</strong></label>
+  
+  <div class="col-sm-3">
+  <div class="form-control" id="inputEmail3">
+  <%= @usuario.correo_corporativo %>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="form-group row">
+  
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><strong>Perfil</strong></label>
+  
+  <div class="col-sm-3">
+  <div class="form-control" id="inputEmail3">
+  <%= @usuario.perfil %>
+  </div>
+  </div>
+  </div>
+
+
+<br>
+  <div style="padding:5px" class="actions text-left">
+  <%= link_to 'Regresar',usuarios_path, :class => "btn btn-info"%>
+  <%= link_to 'Editar', edit_usuario_path(@usuario), :class => "btn btn-info"%>
+</div>
+

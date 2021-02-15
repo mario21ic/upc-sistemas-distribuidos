@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Caracteristicas Proyectos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cod proyecto</th>
+      <th>Cod caracteristica</th>
+      <th>Estado</th>
+      <th>Usu crea</th>
+      <th>Fec crea</th>
+      <th>Usu mod</th>
+      <th>Fec mod</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caracteristicas_proyectos.each do |caracteristicas_proyecto| %>
+      <tr>
+        <td><%= caracteristicas_proyecto.cod_proyecto %></td>
+        <td><%= caracteristicas_proyecto.cod_caracteristica %></td>
+        <td><%= caracteristicas_proyecto.estado %></td>
+        <td><%= caracteristicas_proyecto.usu_crea %></td>
+        <td><%= caracteristicas_proyecto.fec_crea %></td>
+        <td><%= caracteristicas_proyecto.usu_mod %></td>
+        <td><%= caracteristicas_proyecto.fec_mod %></td>
+        <td><%= link_to 'Show', caracteristicas_proyecto %></td>
+        <td><%= link_to 'Edit', edit_caracteristicas_proyecto_path(caracteristicas_proyecto) %></td>
+        <td><%= link_to 'Destroy', caracteristicas_proyecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caracteristicas Proyecto', new_caracteristicas_proyecto_path %>

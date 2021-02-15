@@ -1,0 +1,5 @@
+<%= content_for :titulo do %>
+  <small class="text-secondary"><small>Proyecto: </small></small> <b style="color:black;"><%= @proyecto.nombre %></b>
+  <small> <small> <small> » Editar departamento</small></small></small>
+<% end %>
+<%= render 'form', departamento: @departamento %>

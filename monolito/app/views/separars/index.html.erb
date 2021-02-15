@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+<%= content_for :head do %>
+  <br/>
+  <div class="row bd-example">
+    <div class="col-md-9 mb-2">
+      <h1 class="display-1">Separaciones</h1>
+    </div>
+    <div class="col-md-3 text-right mb-2">
+      <br/>
+      <br/>
+      <%= link_to 'Nuevo Separacion', new_separar_path, :class => "form-control btn btn-lg btn-outline-primary text-primary" %>
+    </div>
+  </div>
+<% end %>
+
+
+  <div class="row mt-4">
+    <div class="col-md-8">
+      <input class="form-control form-control-lg mr-sm-2" type="search" placeholder="Ingrese nombre del cliente" aria-label="Search">
+    </div>
+    <div class="col-md-2 text-right">
+      <button class="form-control btn btn-lg btn-success my-2 my-sm-0" type="submit">Buscar</button>
+    </div>
+    <div class="col-md-2 text-right">
+      <button class="form-control btn btn-lg btn-warning my-2 my-sm-0" type="submit">Limpiar</button>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-md-8 text-right">
+    </div>
+    
+  </div>
+
+    <% @separars.each do |separar| %>
+      <div class="card mt-2">
+        <div class="col-md-12">
+            <div class="card-header row  bg-secondary text-light">
+              <div class="col-md-11">
+                <b>Cliente:</b> <%= separar.nombres %> <%= separar.apellidos %>
+              </div>
+              <div class="col-md-1 text-right">
+                <span class="badge badge-primary badge-pill">Activo</span>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>DNI:</b> <%= separar.dni %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Correo:</b> <%= separar.correo %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Voucher:</b> <%= separar.voucher %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Monto:</b> <%= separar.monto %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Registrado:</b> <%= separar.created_at %>
+              </div>
+            </div>
+            <div class="col-md-12 text-right mb-3">
+                  <%= link_to 'Editar', edit_separar_path(separar), :class => "btn-danger btn-sm text-light mr-3" %>
+            </div>
+        </div>
+      </div>
+
+    <% end %>
+<br/>
+<%= link_to 'Nueva Separacion', new_separar_path, :class => "btn btn-lg btn-success text-light" %>
+
+<%= render partial: '/layouts/paginacion'%>

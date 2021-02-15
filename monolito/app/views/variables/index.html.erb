@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Variables</h1>
+
+
+<% @variables.where(tipo_variable: 'TipoVariable').each do |grupoVariable| %>
+<div tg>
+  <h3><%= grupoVariable.descricion_variable %></h3>
+  <table style="display:none;">
+    <thead>
+      <tr>
+        <th>Tipo variable</th>
+        <th>Codigo variable</th>
+        <th>Descricion variable</th>
+        <th>Dato extra</th>
+        <th>Dato extra2</th>
+        <th>Dato extra3</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @variables.where(tipo_variable: grupoVariable.codigo_variable).each do |variable| %>
+        <tr>
+          <td><%= variable.tipo_variable %></td>
+          <td><%= variable.codigo_variable %></td>
+          <td><%= variable.descricion_variable %></td>
+          <td><%= variable.dato_extra %></td>
+          <td><%= variable.dato_extra2 %></td>
+          <td><%= variable.dato_extra3 %></td>
+          <td><%= variable.estado %></td>
+          <td><%= link_to 'Edit', edit_variable_path(variable) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<% end %>
+<script type="text/javascript">$("[tg]").each(function(a,b){$(b).find("h3").click(function(){$(b).find("table").toggle();})})</script>
+<%= link_to 'New Variable', new_variable_path %>

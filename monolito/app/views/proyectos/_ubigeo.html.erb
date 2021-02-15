@@ -1,0 +1,20 @@
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+        $("[id$='provincia'] option:not([value='']),[id$='distrito'] option:not([value=''])").hide();
+      
+      $("[id$='departamento']").on('change', function() {
+        $("[id$='provincia'],[id$='distrito']").val('');
+        $("[id$='provincia'] option").show();
+        $("[id$='provincia'] option:not([value^='"+this.value+"']):not([value='']),[id$='distrito'] option:not([value=''])").hide();
+      });
+      
+      $("[id$='provincia']").on('change', function() {
+        $("[id$='distrito']").val('');
+        $("[id$='distrito'] option").show();
+        $("[id$='distrito'] option:not([value^='"+this.value+"']):not([value=''])").hide();
+      });
+
+    });
+  </script>

@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Departamento:</strong>
+  <%= Departamento.select(:numero).where("id = " + @solicitud.departamento_id.to_s).collect(&:numero)[0] %>
+</p>
+
+<p>
+  <strong>DNI:</strong>
+  <%= @solicitud.numero_documento %>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @solicitud.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @solicitud.apellidos %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @solicitud.correo %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @solicitud.telefono %>
+</p>
+
+<p>
+  <strong>Mensaje:</strong>
+  <%= @solicitud.mensaje %>
+</p>
+
+<!--
+<p>
+  <strong>Estado:</strong>
+  <%= @solicitud.estado %>
+</p>
+
+<%= link_to 'Editar', edit_solicitud_path(@solicitud), :class => "btn btn-lg btn-success text-light" %>
+<%= link_to 'Volver', solicituds_path, :class => "btn-warning btn btn-lg"%>
+-->
+
+

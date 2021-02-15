@@ -1,0 +1,103 @@
+<p id="notice"><%= notice %></p>
+<%= content_for :head do %>
+  <br/>
+  <div class="row bd-example">
+    <div class="col-md-9 mb-2">
+      <h1 class="display-1">Usuarios</h1>
+    </div>
+    <div class="col-md-3 text-right mb-2">
+      <br/>
+      <br/>
+      <%= link_to 'Nuevo Usuario', new_usuario_path, :class => "form-control btn btn-lg btn-outline-primary text-primary " %>
+    </div>
+  </div>
+<% end %>
+
+
+  
+
+  <div class="row mt-2">
+    
+    <div class="col-md-3 text-left">
+     <h3>Registro de Usuarios</h3>
+    </div>
+    <div class="col-md-2">
+    <%= link_to '<button class="form-control btn btn-success my-2 my-sm-0" type="submit">Nuevo</button>'.html_safe, new_usuario_path %>
+      
+    </div>
+    
+  </div>
+
+    <% @usuarios.each do |usuario| %>
+      <div class="card mt-2">
+        <div class="col-md-12">
+            <div class="card-header row  bg-secondary text-light">
+              <div class="col-md-11">
+                <b>Usuario:</b> <%= usuario.correo_corporativo %>
+              </div>
+              <div class="col-md-1 text-right">
+                <span class="badge badge-primary badge-pill"><%= usuario.estado %></span>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <div class="card-body">
+                <b><%= usuario.tipo_doc %>:</b> <%= usuario.numero_documento %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Perfil:</b> <%= usuario.perfil %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Email Corporativo:</b> <%= usuario.correo_corporativo %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card-body">
+                <b>Apellido:</b> <%= usuario.apellido_materno %>
+              </div>
+            </div>
+
+
+            <div class="col-md-3">
+              <div class="card-body">
+              </div>
+            </div>
+            
+            
+      </div>
+      <div class="actions text-right" >
+            
+            <%= link_to 'Editar', edit_usuario_path(usuario), :class => "btn-danger btn-sm text-light mr-3" %>
+            
+            
+            <%= link_to 'Mostrar', usuario, :class => "btn-danger btn-sm text-light mr-3" %>
+           
+            
+            <%= link_to 'Eliminar', usuario, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn-danger btn-sm text-light mr-3" %>
+            
+           </div>
+
+
+    <% end %>
+
+      <div class="digg_pagination">
+        <%= will_paginate @Usuarios %>
+      </div>
+<%= render partial: '/layouts/paginacion'%>

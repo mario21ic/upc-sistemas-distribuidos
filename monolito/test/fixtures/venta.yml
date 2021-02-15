@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_venta: 1
+  tipo_documento: MyString
+  numero_documento: MyString
+  cod_departamento: 1
+  cod_solicitud: 1
+  tipo_compra: MyString
+  total: 9.99
+  saldo: 9.99
+  estado: MyString
+  usu_crea: MyString
+  fec_crea: 2020-11-01 01:41:10
+  usu_mod: MyString
+  fec_mod: 2020-11-01 01:41:10
+
+two:
+  cod_venta: 1
+  tipo_documento: MyString
+  numero_documento: MyString
+  cod_departamento: 1
+  cod_solicitud: 1
+  tipo_compra: MyString
+  total: 9.99
+  saldo: 9.99
+  estado: MyString
+  usu_crea: MyString
+  fec_crea: 2020-11-01 01:41:10
+  usu_mod: MyString
+  fec_mod: 2020-11-01 01:41:10

@@ -1,0 +1,104 @@
+<%= form_with(model: archivo, local: true) do |form| %>
+         <%= form.hidden_field :cod_proyecto%>
+         <%= form.hidden_field :cod_departamento%>
+
+<div class="form-row mt-3">
+      <div class="col-md-9 mb-3">
+         <%= form.label :nombre_archivo, "Archivo", :class=>"col-form-label col-form-label-lg" %>
+         
+        <label class="form-control form-control-lg text-center align-middle" style="height: 417px;" for="archivo_nombre_archivo">
+            <span style="border: 1px dashed grey; display: inline-block;border-radius: 4px;">
+              <table style="height: 400px;width: 100%;">
+                <tr>
+                  <td >
+                    <div style="height: 1px;overflow: hidden;">
+                      <%if @archivo.id?%>
+                        <%= form.file_field :nombre_archivo, {:class=>"custom-file-input" , :style=>"border:none;height:1px!important!;width:1px!important!;", :accept=>"image/*"}%>
+                      <%else%>
+                        <%= form.file_field :nombre_archivo, {:class=>"custom-file-input" , :style=>"border:none;height:1px!important!;width:1px!important!;", :accept=>"image/*", :required=>"required"}%>
+                      <%end%>
+                    </div>
+                    <div xImage>
+                      <%if @archivo.nombre_archivo? %>
+
+                        <%= image_tag @archivo.nombre_archivo.url, :style=>"max-height:390px;width: auto;"%>
+                      <%else%>
+                        Seleccione un archivo
+                      <%end%>
+                    </div>
+                  </td>
+                  <script type="text/javascript">
+                    setTimeout(()=>
+                      {
+                          $('#archivo_nombre_archivo').change(function (x,y,d){
+                            $('[xImage]').html(this.value);
+                          })
+                      },100)
+                  </script>
+                </tr>
+              </table>
+          </span>
+        </label>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-3"> 
+        <div class="row">
+          <div class="col-md-12 mb-3 field">
+         <%= form.label :descripcion_corta, "Título", :class=>"col-form-label col-form-label-lg" %>
+            <%= form.text_field :descripcion_corta, {:class=>"form-control form-control-lg", :required=>"required"} %>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-12 mb-3 field">
+            <label class="col-form-label col-form-label-lg">Descripción</label>
+            <%= form.text_area :descripcion_larga, {:class=>"form-control form-control-lg", :required=>"required"} %>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-12 mb-3 field">
+        <%= form.label :cod_tip_archivo, "Favorito", :class=>"col-form-label col-form-label-lg" %>
+
+            <%= form.collection_select :cod_tip_archivo, @variables.where(tipo_variable: 'SiNo'), :id, :descricion_variable, {:include_blank  => "[Seleccione]"}, :class=>"form-control form-control-lg mr-sm-2", :required=>"required"%>
+
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-5 mb-3 field" style="display: none;">
+            <%= form.label :orden, :class=>"col-form-label col-form-label-lg" %>
+            <%= form.number_field :orden, :class=>"form-control form-control-lg" %>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-12 mb-3 field">
+        <%= form.label :estado, :class=>"col-form-label col-form-label-lg" %>
+
+        <%= form.collection_select :estado, @variables.where(tipo_variable: 'Estado'), :codigo_variable, :descricion_variable, {:include_blank  => "[Seleccione]"}, :class=>"form-control form-control-lg mr-sm-2", :required=>"required"%>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
+        </div>
+      </div>
+  
+</div>
+
+
+<div class="contenedorBoton">
+        <%= link_to(proyecto_path(@proyecto), :class => "btn my-sm-0 btn-lg btn-warning text-light") do %>
+          <i class="icon-arrow-left-24"></i> Regresar
+        <%end%>
+
+        <%= button_tag(type: 'submit', class: "btn my-sm-0 btn-lg btn-success text-light") do %>
+          <i class="icon-check-24"></i>
+           Guardar
+        <% end %>
+  </div>
+
+<% end %>

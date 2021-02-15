@@ -1,0 +1,132 @@
+<%= form_with(model: usuario, local: true) do |form| %>
+  <% if usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+        <% usuario.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="form-row">
+
+    <div class="col-md-4 mb-3 field">
+    <%= form.label :tipo_doc, :class=>"col-form-label col-form-label-lg" %>
+    <%= form.select :tipo_doc,  options_for_select([ "DNI", "C.Extranjeria", "Pasaporte","Ruc"]), {}, { class: "form-control form-control-lg mr-sm-2" } %>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3 field">
+        <label for="validationCustom02" class="col-form-label col-form-label-lg">Numero Documento</label>
+        <%= form.text_field :numero_documento, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 field">
+      <label for="validationCustom02" class="col-form-label col-form-label-lg">Nombres</label>
+      <%= form.text_field :nombre, :class=>"form-control form-control-lg mr-sm-2"%>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3 field">
+    <label for="validationCustom02" class="col-form-label col-form-label-lg">Apellido Paterno</label>
+    <%= form.text_field :apellido, :class=>"form-control form-control-lg mr-sm-2"%>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+    </div>
+    <div class="col-md-4 mb-3 field">
+    <label for="validationCustom02" class="col-form-label col-form-label-lg">Apellido Materno</label>
+    <%= form.text_field :apellido_materno, :class=>"form-control form-control-lg mr-sm-2"%>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+    </div>
+    <!--<div class="col-md-4 mb-3 field">
+    <%= form.label :Tipo_persona, :class=>"col-form-label col-form-label-lg" %>
+    <%= form.select :tipo_persona,  options_for_select([ "Juridico", "Natural"]), {}, { class: "form-control form-control-lg mr-sm-2" } %>
+    
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+    </div>
+    <div class="col-md-4 mb-3 field">
+    <%= form.label :genero, :class=>"col-form-label col-form-label-lg" %>
+    <%= form.select :genero,  options_for_select([ "Masculino", "Femenino"]), {}, { class: "form-control form-control-lg mr-sm-2" } %>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+    </div>-->
+     
+      <div class="col-md-4 mb-3 field">
+      <%= form.label :perfil, :class=>"col-form-label col-form-label-lg" %>
+      <%= form.select :perfil,  options_for_select([ "Administrador", "Gerente", "Asesor"]), { :include_blank => "Seleccione perfil" } , { class: "form-control form-control-lg mr-sm-2" } %>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :correo_corporativo, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.email_field :correo_corporativo, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <label for="validationCustom02" class="col-form-label col-form-label-lg">Contraseña</label>
+        <%= form.password_field :contraseña, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <!--<div class="col-md-4 mb-3 field">
+        <label for="validationCustom02" class="col-form-label col-form-label-lg">Telefono</label>
+        <%= form.text_field :telefono, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <label for="validationCustom02" class="col-form-label col-form-label-lg">Usuario</label>
+        <%= form.text_field :codigo_usuario, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>-->
+      <!--<div class="col-md-4 mb-3 field">
+      <%= form.label :estado, :class=>"col-form-label col-form-label-lg" %>
+      <%= form.select :estado,  options_for_select([ "Activo", "Inactivo", "Falta Activar",]),{}, { class: "form-control form-control-lg mr-sm-2" }  %>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>--
+
+  
+
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :correo_personal, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.email_field :correo_personal, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 field">
+        <%= form.label :fecha_nacimiento, :class=>"col-form-label col-form-label-lg" %>
+        <%= form.date_field :fec_crea, :class=>"form-control form-control-lg mr-sm-2"%>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>-->
+    </div>
+  
+<div class="actions text-right">
+  <%= link_to 'Regresar', usuarios_path, :class => "btn-warning btn btn-lg"%>
+  <%= form.submit "Guardar", :class => "btn btn-lg btn-success text-light"%>
+</div>
+<% end %>

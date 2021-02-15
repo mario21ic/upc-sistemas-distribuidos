@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cod archivo:</strong>
+  <%= @archivo.cod_archivo %>
+</p>
+
+<p>
+  <strong>Cod tip archivo:</strong>
+  <%= @archivo.cod_tip_archivo %>
+</p>
+
+<p>
+  <strong>Cod proyecto:</strong>
+  <%= @archivo.cod_proyecto %>
+</p>
+
+<p>
+  <strong>Cod departamento:</strong>
+  <%= @archivo.cod_departamento %>
+</p>
+
+<p>
+  <strong>Nombre archivo:</strong>
+  <%= image_tag(@archivo.nombre_archivo.url) if @archivo.nombre_archivo?%>
+</p>
+
+<p>
+  <strong>Descripcion corta:</strong>
+  <%= @archivo.descripcion_corta %>
+</p>
+
+<p>
+  <strong>Descripcion larga:</strong>
+  <%= @archivo.descripcion_larga %>
+</p>
+
+<p>
+  <strong>Orden:</strong>
+  <%= @archivo.orden %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @archivo.estado %>
+</p>
+
+
+<%= link_to 'Edit', edit_archivo_path(@archivo) %> |
+<%= link_to 'Back', archivos_path %>

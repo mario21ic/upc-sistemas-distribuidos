@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Venta id:</strong>
+  <%= @ventum.id %>
+</p>
+
+<p>
+  <strong>Departamento id:</strong>
+  <%= @ventum.departamento_id %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @ventum.tipo_compra %>
+</p>
+
+<% if (@ventum.tipo_compra=="Al Contado") %>
+<p>
+  <strong>Operacion Bancaria:</strong>
+  <%= @ventum.operacion_bancaria %>
+</p>
+<p>
+  <strong>Monto Total:</strong>
+  <%= @ventum.monto %>
+</p>
+<% end %>
+
+<% if (@ventum.tipo_compra=="Financiado") %>
+<p>
+  <strong>Operacion Bancaria:</strong>
+  <%= @ventum.financiado %>
+</p>
+<p>
+  <strong>Monto 10%:</strong>
+  <%= @ventum.monto %>
+</p>
+<% end %>
+
+<p>
+  <strong>DNI:</strong>
+  <%= @ventum.numero_documento %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @ventum.correo %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @ventum.telefono %>
+</p>
+
+<p>
+  <strong>Creado:</strong>
+  <%= @ventum.created_at %>
+</p>
+
+<br/>
+<div style="padding:5px" class="actions text-left">
+    <%= link_to 'Volver', venta_path, :class => "btn btn-info" %> |
+    <%= link_to 'Editar', edit_ventum_path(@ventum), :class => "btn btn-warning" %>
+</div>

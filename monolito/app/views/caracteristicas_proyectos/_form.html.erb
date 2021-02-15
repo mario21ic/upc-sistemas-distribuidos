@@ -1,0 +1,52 @@
+<%= form_with(model: caracteristicas_proyecto, local: true) do |form| %>
+  <% if caracteristicas_proyecto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(caracteristicas_proyecto.errors.count, "error") %> prohibited this caracteristicas_proyecto from being saved:</h2>
+
+      <ul>
+        <% caracteristicas_proyecto.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cod_proyecto %>
+    <%= form.number_field :cod_proyecto %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cod_caracteristica %>
+    <%= form.text_field :cod_caracteristica %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado %>
+    <%= form.text_field :estado %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usu_crea %>
+    <%= form.text_field :usu_crea %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fec_crea %>
+    <%= form.datetime_select :fec_crea %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usu_mod %>
+    <%= form.text_field :usu_mod %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fec_mod %>
+    <%= form.datetime_select :fec_mod %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

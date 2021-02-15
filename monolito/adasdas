@@ -1,0 +1,392 @@
+[1mdiff --git a/app/controllers/archivos_controller.rb b/app/controllers/archivos_controller.rb[m
+[1mindex ce8ffafa..23a12314 100644[m
+[1m--- a/app/controllers/archivos_controller.rb[m
+[1m+++ b/app/controllers/archivos_controller.rb[m
+[36m@@ -6,6 +6,8 @@[m [mclass ArchivosController < ApplicationController[m
+   # GET /archivos.json[m
+   def index[m
+     @archivos = Archivo.where(cod_proyecto:params[:cod_proyecto],cod_departamento:params[:cod_departamento])[m
+[32m+[m[32m    @proyecto = Proyecto.find(params[:cod_proyecto])[m
+[32m+[m[32m    @departamento = Departamento.find(params[:cod_departamento])[m
+   end[m
+ [m
+   # GET /archivos/1[m
+[36m@@ -16,10 +18,14 @@[m [mclass ArchivosController < ApplicationController[m
+   # GET /archivos/new[m
+   def new[m
+     @archivo = Archivo.new[m
+[32m+[m[32m    @archivo.cod_proyecto = params[:cod_proyecto][m
+[32m+[m[32m    @proyecto = Proyecto.find(params[:cod_proyecto])[m
+[32m+[m[32m    @archivo.cod_departamento = params[:cod_departamento][m
+   end[m
+ [m
+   # GET /archivos/1/edit[m
+   def edit[m
+[32m+[m[32m    @proyecto = Proyecto.find(@archivo.cod_proyecto)[m
+   end[m
+ [m
+   # POST /archivos[m
+[36m@@ -29,7 +35,7 @@[m [mclass ArchivosController < ApplicationController[m
+ [m
+     respond_to do |format|[m
+       if @archivo.save[m
+[31m-        format.html { redirect_to @archivo, notice: 'Archivo was successfully created.' }[m
+[32m+[m[32m        format.html { redirect_to archivos_url(cod_proyecto:@archivo.cod_proyecto,cod_departamento:@archivo.cod_departamento), notice: 'Archivo was successfully created.' }[m
+         format.json { render :show, status: :created, location: @archivo }[m
+       else[m
+         format.html { render :new }[m
+[36m@@ -43,7 +49,7 @@[m [mclass ArchivosController < ApplicationController[m
+   def update[m
+     respond_to do |format|[m
+       if @archivo.update(archivo_params)[m
+[31m-        format.html { redirect_to @archivo, notice: 'Archivo was successfully updated.' }[m
+[32m+[m[32m        format.html { redirect_to archivos_url(cod_proyecto:@archivo.cod_proyecto,cod_departamento:@archivo.cod_departamento), notice: 'Archivo was successfully updated.' }[m
+         format.json { render :show, status: :ok, location: @archivo }[m
+       else[m
+         format.html { render :edit }[m
+[1mdiff --git a/app/controllers/departamentos_controller.rb b/app/controllers/departamentos_controller.rb[m
+[1mindex 8437952e..857e64da 100644[m
+[1m--- a/app/controllers/departamentos_controller.rb[m
+[1m+++ b/app/controllers/departamentos_controller.rb[m
+[36m@@ -7,6 +7,7 @@[m [mclass DepartamentosController < ApplicationController[m
+   # GET /departamentos[m
+   # GET /departamentos.json[m
+   def index[m
+[32m+[m[32m      @archivos = Archivo.where(estado: 'A')[m
+     @departamentos = Departamento.where(cod_proyecto: params[:cod_proyecto])[m
+   end[m
+ [m
+[1mdiff --git a/app/controllers/home_controller.rb b/app/controllers/home_controller.rb[m
+[1mindex 448c679b..a245cb88 100644[m
+[1m--- a/app/controllers/home_controller.rb[m
+[1m+++ b/app/controllers/home_controller.rb[m
+[36m@@ -5,6 +5,7 @@[m [mclass HomeController < ApplicationController[m
+   def index[m
+     @proyectos = Proyecto.where("estado!='I' AND mca_favorito = 'S'")[m
+     @departamentos = Departamento.where("estado!='I'")[m
+[32m+[m[32m    @archivos = Archivo.where("estado!='I'")[m
+   end[m
+ [m
+   def nosotros[m
+[1mdiff --git a/app/controllers/proyectos_controller.rb b/app/controllers/proyectos_controller.rb[m
+[1mindex 50ba3b7d..2848022e 100644[m
+[1m--- a/app/controllers/proyectos_controller.rb[m
+[1m+++ b/app/controllers/proyectos_controller.rb[m
+[36m@@ -8,12 +8,14 @@[m [mclass ProyectosController < ApplicationController[m
+   # GET /proyectos.json[m
+   def index[m
+     @departamentos = Departamento.where(estado: 'A')[m
+[32m+[m[32m    @archivos = Archivo.where(estado: 'A')[m
+     @proyectos = Proyecto.all[m
+   end[m
+ [m
+   # GET /proyectos/1[m
+   # GET /proyectos/1.json[m
+   def show[m
+[32m+[m[32m    @archivos = Archivo.where(estado: 'A')[m
+     @departamentos = Departamento.where(cod_proyecto: params[:id])[m
+     @caracteristicas_proyecto = CaracteristicasProyecto.where(cod_proyecto: params[:id],estado: 'A')[m
+   end[m
+[1mdiff --git a/app/views/archivos/_form.html.erb b/app/views/archivos/_form.html.erb[m
+[1mindex 932604da..74be8d1c 100644[m
+[1m--- a/app/views/archivos/_form.html.erb[m
+[1m+++ b/app/views/archivos/_form.html.erb[m
+[36m@@ -5,18 +5,36 @@[m
+ <div class="form-row mt-3">[m
+       <div class="col-md-9 mb-3">[m
+          <%= form.label :nombre_archivo, "Archivo", :class=>"col-form-label col-form-label-lg" %>[m
+[31m-         <%= form.file_field :nombre_archivo, {:class=>"custom-file-input" , :style=>"display: none;", :accept=>"image/*"}%>[m
+[31m-        <label class="form-control form-control-lg text-center align-middle" style="height: 526px;" for="archivo_nombre_archivo">[m
+[32m+[m[41m         [m
+[32m+[m[32m        <label class="form-control form-control-lg text-center align-middle" style="height: 417px;" for="archivo_nombre_archivo">[m
+             <span style="border: 1px dashed grey; display: inline-block;border-radius: 4px;">[m
+[31m-              <table style="height: 508px;width: 100%;">[m
+[32m+[m[32m              <table style="height: 400px;width: 100%;">[m
+                 <tr>[m
+[31m-                  <td>[m
+[31m-                    <%if @archivo.nombre_archivo %>[m
+[31m-                      <%= image_tag(@archivo.nombre_archivo.url)%>[m
+[31m-                    <%else%>[m
+[31m-                      Seleccione un archivo[m
+[31m-                    <%end%> [m
+[32m+[m[32m                  <td >[m
+[32m+[m[32m                    <div style="height: 1px;overflow: hidden;">[m
+[32m+[m[32m                      <%if @archivo.id?%>[m
+[32m+[m[32m                        <%= form.file_field :nombre_archivo, {:class=>"custom-file-input" , :style=>"border:none;height:1px!important!;width:1px!important!;", :accept=>"image/*"}%>[m
+[32m+[m[32m                      <%else%>[m
+[32m+[m[32m                        <%= form.file_field :nombre_archivo, {:class=>"custom-file-input" , :style=>"border:none;height:1px!important!;width:1px!important!;", :accept=>"image/*", :required=>"required"}%>[m
+[32m+[m[32m                      <%end%>[m
+[32m+[m[32m                    </div>[m
+[32m+[m[32m                    <div xImage>[m
+[32m+[m[32m                      <%if @archivo.nombre_archivo? %>[m
+[32m+[m
+[32m+[m[32m                        <%= image_tag @archivo.nombre_archivo.url, :style=>"max-height:390px;width: auto;"%>[m
+[32m+[m[32m                      <%else%>[m
+[32m+[m[32m                        Seleccione un archivo[m
+[32m+[m[32m                      <%end%>[m
+[32m+[m[32m                    </div>[m
+                   </td>[m
+[32m+[m[32m                  <script type="text/javascript">[m
+[32m+[m[32m                    setTimeout(()=>[m
+[32m+[m[32m                      {[m
+[32m+[m[32m                          $('#archivo_nombre_archivo').change(function (x,y,d){[m
+[32m+[m[32m                            $('[xImage]').html(this.value);[m
+[32m+[m[32m                          })[m
+[32m+[m[32m                      },100)[m
+[32m+[m[32m                  </script>[m
+                 </tr>[m
+               </table>[m
+           </span>[m
+[36m@@ -28,31 +46,29 @@[m
+       <div class="col-md-3"> [m
+         <div class="row">[m
+           <div class="col-md-12 mb-3 field">[m
+[31m-            <label class="col-form-label col-form-label-lg">Titulo</label>[m
+[31m-            <%= form.text_field :descripcion_corta, :class=>"form-control form-control-lg" %>[m
+[32m+[m[32m         <%= form.label :descripcion_corta, "Título", :class=>"col-form-label col-form-label-lg" %>[m
+[32m+[m[32m            <%= form.text_field :descripcion_corta, {:class=>"form-control form-control-lg", :required=>"required"} %>[m
+             <div class="valid-feedback">[m
+               Looks good![m
+             </div>[m
+           </div>[m
+           <div class="col-md-12 mb-3 field">[m
+             <label class="col-form-label col-form-label-lg">Descripción</label>[m
+[31m-            <%= form.text_area :descripcion_larga, :class=>"form-control form-control-lg" %>[m
+[32m+[m[32m            <%= form.text_area :descripcion_larga, {:class=>"form-control form-control-lg", :required=>"required"} %>[m
+             <div class="valid-feedback">[m
+               Looks good![m
+             </div>[m
+           </div>[m
+           <div class="col-md-12 mb-3 field">[m
+[31m-            <label for="validationCustom02" class="col-form-label col-form-label-lg">Favorito</label>[m
+[31m-            <select class="form-control form-control-lg mr-sm-2">[m
+[31m-              <option>[Seleccione]</option>[m
+[31m-              <option value="value1">Si es favorito</option> [m
+[31m-              <option value="value3">No es favorito</option>       [m
+[31m-            </select>[m
+[32m+[m[32m        <%= form.label :cod_tip_archivo, "Favorito", :class=>"col-form-label col-form-label-lg" %>[m
+[32m+[m
+[32m+[m[32m            <%= form.collection_select :cod_tip_archivo, @variables.where(tipo_variable: 'SiNo'), :id, :descricion_variable, {:include_blank  => "[Seleccione]"}, :class=>"form-control form-control-lg mr-sm-2", :required=>"required"%>[m
+[32m+[m
+             <div class="valid-feedback">[m
+               Looks good![m
+             </div>[m
+           </div>[m
+[31m-          <div class="col-md-5 mb-3 field">[m
+[32m+[m[32m          <div class="col-md-5 mb-3 field" style="display: none;">[m
+             <%= form.label :orden, :class=>"col-form-label col-form-label-lg" %>[m
+             <%= form.number_field :orden, :class=>"form-control form-control-lg" %>[m
+             <div class="valid-feedback">[m
+[36m@@ -60,12 +76,9 @@[m
+             </div>[m
+           </div>[m
+           <div class="col-md-12 mb-3 field">[m
+[31m-            <%= form.label :estado, :class=>"col-form-label col-form-label-lg" %>[m
+[31m-            <select class="form-control form-control-lg mr-sm-2">[m
+[31m-              <option>[Seleccione]</option>        [m
+[31m-              <option value="value1">Activo</option> [m
+[31m-              <option value="value3">Inactivo</option>[m
+[31m-            </select>[m
+[32m+[m[32m        <%= form.label :estado, :class=>"col-form-label col-form-label-lg" %>[m
+[32m+[m
+[32m+[m[32m        <%= form.collection_select :estado, @variables.where(tipo_variable: 'Estado'), :codigo_variable, :descricion_variable, {:include_blank  => "[Seleccione]"}, :class=>"form-control form-control-lg mr-sm-2", :required=>"required"%>[m
+             <div class="valid-feedback">[m
+               Looks good![m
+             </div>[m
+[36m@@ -77,10 +90,15 @@[m
+ </div>[m
+ [m
+ [m
+[32m+[m[32m<div class="contenedorBoton">[m
+[32m+[m[32m        <%= link_to(proyecto_path(@proyecto), :class => "btn my-sm-0 btn-lg btn-warning text-light") do %>[m
+[32m+[m[32m          <i class="icon-arrow-left-24"></i> Regresar[m
+[32m+[m[32m        <%end%>[m
+ [m
+[32m+[m[32m        <%= button_tag(type: 'submit', class: "btn my-sm-0 btn-lg btn-success text-light") do %>[m
+[32m+[m[32m          <i class="icon-check-24"></i>[m
+[32m+[m[32m           Guardar[m
+[32m+[m[32m        <% end %>[m
+[32m+[m[32m  </div>[m
+ [m
+[31m-<div class="actions text-right">[m
+[31m-  <%= link_to 'Regresar', proyectos_path, :class => "btn-warning btn btn-lg" %>[m
+[31m-  <%= form.submit "Guardar", :class => "btn btn-lg btn-success text-light"%>[m
+[31m-</div>[m
+ <% end %>[m
+[1mdiff --git a/app/views/archivos/edit.html.erb b/app/views/archivos/edit.html.erb[m
+[1mindex 88457d2d..e4116c6a 100644[m
+[1m--- a/app/views/archivos/edit.html.erb[m
+[1m+++ b/app/views/archivos/edit.html.erb[m
+[36m@@ -1,11 +1,6 @@[m
+[31m-<%= content_for :head do %>[m
+[31m-  <br/>[m
+[31m-  <div class="row bd-example">[m
+[31m-    <div class="col-md-12 mb-4">[m
+[31m-      <span class="display-2">Archivo</span>[m
+[31m-      <span class="display-4"> » Editar</span>[m
+[31m-    </div>[m
+[31m-  </div>[m
+[32m+[m[32m<%= content_for :titulo do %>[m
+[32m+[m[32m  Archivo[m
+[32m+[m[32m      <small> » Editar</small>[m[41m [m
+ <% end %>[m
+ [m
+ <%= render 'form', archivo: @archivo %>[m
+\ No newline at end of file[m
+[1mdiff --git a/app/views/archivos/index.html.erb b/app/views/archivos/index.html.erb[m
+[1mindex 27a26226..fb1feec0 100644[m
+[1m--- a/app/views/archivos/index.html.erb[m
+[1m+++ b/app/views/archivos/index.html.erb[m
+[36m@@ -1,34 +1,36 @@[m
+ <%= content_for :titulo do %>[m
+      Fotos[m
+ <% end %>[m
+[31m-<%= content_for :head do %>[m
+[31m-  <br/>[m
+[31m-  <div class="row bd-example">[m
+[31m-    <div class="col-md-12 mb-4">[m
+[31m-      <span class="display-2">{{Proyecto.Nombre}} </span>[m
+[31m-    </div>[m
+[32m+[m
+[32m+[m[32m  <div class="contenedorBoton">[m
+[32m+[m[32m        <%= link_to(proyecto_path(@proyecto), :class => "btn my-sm-0 btn-lg btn-warning text-light") do %>[m
+[32m+[m[32m          <i class="icon-arrow-left-24"></i> Regresar[m
+[32m+[m[32m        <%end%>[m
+[32m+[m[41m        [m
+[32m+[m[32m          <a class="btn btn-primary btn-lg text-light" href="/archivos/<%= @proyecto.id%>/<%= @departamento.id%>/new">[m
+[32m+[m[32m              <i class="icon-image-24"></i>[m
+[32m+[m[32m              Nuevo Archivo[m
+[32m+[m[32m          </a>[m
+[32m+[m
+   </div>[m
+[31m-<% end %>[m
+[32m+[m
+ <div class="row mt-4">[m
+[31m-  <div class="col-md-8">[m
+[31m-    <h1>Fotos y Videos</h1>[m
+[31m-  </div>[m
+[31m-  <div class="col-md-2 text-right mb-5">[m
+[31m-      <%= link_to 'Regresar', proyectos_path, :class => "btn-outline-warning btn" %>[m
+[31m-  </div>[m
+[31m-  <div class="col-md-2 text-right">[m
+[31m-      <%= link_to 'Nuevo Archivo', new_archivo_path, :class => "form-control btn btn-outline-primary text-primary" %>[m
+[31m-  </div>[m
+[32m+[m
+   <% @archivos.each do |archivo| %>[m
+     <div class="col-md-4">[m
+[31m-      <div class="card mb-3">[m
+[32m+[m[32m      <div class="mb-3 border boder-secondary bg-white">[m
+         <div class="row no-gutters">[m
+[31m-          <div class="col-md-12 bg-secondary" style="overflow:hidden; background-color: ">[m
+[31m-              <img src="https://img10.naventcdn.com/avisos/111/00/08/03/06/86/1200x1200/160060081.jpg" class="card-img rounded-top" style="height: 100%;max-height: 300px;width: auto;" alt="...">[m
+[32m+[m[32m          <div class="col-md-12 text-center border boder-secondary" style="overflow:hidden;">[m
+[32m+[m[32m              <%= image_tag archivo.nombre_archivo.url, :style=>"max-height: 300px;width: auto;"%>[m
+           </div>[m
+           <div class="col-12 text-right">[m
+[31m-            <span class="badge badge-primary badge-pill mt-2 mr-2">Activo</span>[m
+[31m-            <span class="card-text text-warning h4 mr-2"><%= archivo.estado %></span>[m
+[32m+[m[32m              <%= @variables.select(:descricion_variable).where(tipo_variable: 'Estado', codigo_variable: archivo.estado).collect(&:descricion_variable)[0] %>[m
+[32m+[m[32m              <%f = @variables.select(:codigo_variable).where(tipo_variable: 'SiNo', id: archivo.cod_tip_archivo).collect(&:codigo_variable)[0] %>[m
+[32m+[m[32m              <% if f == 'S'%>[m
+[32m+[m[32m                 <span class="card-text text-warning h4" title="Marcado como favorito.">★</span>[m
+[32m+[m[32m                 &nbsp;[m
+[32m+[m[32m               <% end %>[m
+[32m+[m[32m            </span>[m
+           </div>[m
+           <div class="col-md-12 text-justify col-form-label-lg">[m
+              <p class="card-text card-body" style="padding:0 20px 0 20px;"><b><%= archivo.descripcion_corta %></b></p>[m
+[36m@@ -44,26 +46,3 @@[m
+ </div>[m
+ [m
+ [m
+[31m-<br>[m
+[31m-[m
+[31m-<%= content_for :food do %>[m
+[31m-  <nav aria-label="Page navigation example">[m
+[31m-    <ul class="pagination">[m
+[31m-      <li class="page-item">[m
+[31m-        <a class="page-link" href="#" aria-label="Previous">[m
+[31m-          <span aria-hidden="true">&laquo;</span>[m
+[31m-          <span class="sr-only">Previous</span>[m
+[31m-        </a>[m
+[31m-      </li>[m
+[31m-      <li class="page-item"><a class="page-link" href="#">1</a></li>[m
+[31m-      <li class="page-item"><a class="page-link" href="#">2</a></li>[m
+[31m-      <li class="page-item"><a class="page-link" href="#">3</a></li>[m
+[31m-      <li class="page-item">[m
+[31m-        <a class="page-link" href="#" aria-label="Next">[m
+[31m-          <span aria-hidden="true">&raquo;</span>[m
+[31m-          <span class="sr-only">Next</span>[m
+[31m-        </a>[m
+[31m-      </li>[m
+[31m-    </ul>[m
+[31m-  </nav>[m
+[31m-<% end %>[m
+[1mdiff --git a/app/views/departamentos/_item.html.erb b/app/views/departamentos/_item.html.erb[m
+[1mindex 9eebe310..ab5bdf76 100644[m
+[1m--- a/app/views/departamentos/_item.html.erb[m
+[1m+++ b/app/views/departamentos/_item.html.erb[m
+[36m@@ -2,7 +2,21 @@[m
+   <% departamentos.each do |departamento| %>[m
+     <div class="col-md-4">[m
+       <div class="mb-3 tarjeta">[m
+[31m-        <img src="https://img10.naventcdn.com/avisos/111/00/08/03/06/86/1200x1200/160060081.jpg" style="min-height: 300px;width: 100%;">[m
+[32m+[m[32m        <table style="height: 300px;width: 100%;border:0;padding: 0;">[m
+[32m+[m[32m          <tr>[m
+[32m+[m[32m            <td style="text-align: center;padding: 0;">[m
+[32m+[m[32m              <%f = @variables.select(:id).where(tipo_variable: 'SiNo', codigo_variable: 'S').collect(&:id)[0] %>[m
+[32m+[m[32m              <%img = @archivos.select(:nombre_archivo).where(cod_proyecto: departamento.cod_proyecto, cod_departamento: departamento.id, cod_tip_archivo: f).collect(&:nombre_archivo)[0] %>[m
+[32m+[m[32m              <%img_id = @archivos.select(:id).where(cod_proyecto: departamento.cod_proyecto, cod_departamento: departamento.id, cod_tip_archivo: f).collect(&:id)[0].to_s %>[m
+[32m+[m[32m              <%if img%>[m
+[32m+[m[32m                <img src="/uploads/archivo/nombre_archivo/<%=img_id+"/"+img.to_s.split('/').last%>" style="min-height: 300px;width: 100%;">[m
+[32m+[m[32m              <%else%>[m
+[32m+[m[32m                <img src="/assets/panel/LOGOHOME-be442d2e24dbf568d7c3b886f7162956d640b23c7efc7433a168a257767f9133.png" style="width: 20%;">[m
+[32m+[m[32m              <%end%>[m
+[32m+[m[32m            </td>[m
+[32m+[m[32m          </tr>[m
+[32m+[m[32m        </table>[m
+[32m+[m
+         <div class="row no-gutters">[m
+             <div class="card-body" style="padding-top: 10px;padding-bottom: 10px;">[m
+               <div class="row" style="min-height: 100px; overflow: hidden;">[m
+[1mdiff --git a/app/views/proyectos/_item.html.erb b/app/views/proyectos/_item.html.erb[m
+[1mindex 429349b8..242ff5d5 100644[m
+[1m--- a/app/views/proyectos/_item.html.erb[m
+[1m+++ b/app/views/proyectos/_item.html.erb[m
+[36m@@ -3,7 +3,20 @@[m
+   <% proyectos.each do |proyecto| %>[m
+     <div class="col-md-3">[m
+       <div class="mb-3 tarjeta">[m
+[31m-        <img src="https://abril.pe/wp-content/uploads/2020/03/Fachada_Abedul_Mayo2020.png" style="min-height: 300px;width: 100%;">[m
+[32m+[m[32m        <table style="height: 300px;width: 100%;border:0;padding: 0;">[m
+[32m+[m[32m          <tr>[m
+[32m+[m[32m            <td style="text-align: center;padding: 0;">[m
+[32m+[m[32m              <%f = @variables.select(:id).where(tipo_variable: 'SiNo', codigo_variable: 'S').collect(&:id)[0] %>[m
+[32m+[m[32m              <%img = @archivos.select(:nombre_archivo).where(cod_proyecto: proyecto.id, cod_departamento: 0, cod_tip_archivo: f).collect(&:nombre_archivo)[0] %>[m
+[32m+[m[32m              <%img_id = @archivos.select(:id).where(cod_proyecto: proyecto.id, cod_departamento: 0, cod_tip_archivo: f).collect(&:id)[0].to_s %>[m
+[32m+[m[32m              <%if img%>[m
+[32m+[m[32m                <img src="/uploads/archivo/nombre_archivo/<%=img_id+"/"+img.to_s.split('/').last%>" style="min-height: 300px;width: 100%;">[m
+[32m+[m[32m              <%else%>[m
+[32m+[m[32m                <img src="/assets/panel/LOGOHOME-be442d2e24dbf568d7c3b886f7162956d640b23c7efc7433a168a257767f9133.png" style="width: 20%;">[m
+[32m+[m[32m              <%end%>[m
+[32m+[m[32m            </td>[m
+[32m+[m[32m          </tr>[m
+[32m+[m[32m        </table>[m
+         <div class="row no-gutters">[m
+             <div class="card-body">[m
+               <div class="row" style="min-height: 110px; overflow: hidden;">[m
+[1mdiff --git a/config/routes.rb b/config/routes.rb[m
+[1mindex 2c81e6f1..70cf4e91 100644[m
+[1m--- a/config/routes.rb[m
+[1m+++ b/config/routes.rb[m
+[36m@@ -41,6 +41,7 @@[m [mRails.application.routes.draw do[m
+   get 'departamentos/:id/home'=>'departamentos#home'[m
+ [m
+   get 'archivos/:cod_proyecto/:cod_departamento/index'=>'archivos#index'[m
+[32m+[m[32m  get 'archivos/:cod_proyecto/:cod_departamento/new'=>'archivos#new'[m
+ [m
+   get 'proyectos/:id/home'=>'proyectos#home'[m
+ [m
+[1mdiff --git a/db/development.sqlite3 b/db/development.sqlite3[m
+[1mindex 26c338fe..97fb3b99 100644[m
+Binary files a/db/development.sqlite3 and b/db/development.sqlite3 differ
