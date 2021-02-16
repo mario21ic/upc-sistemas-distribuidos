@@ -8,7 +8,7 @@ namespace Consumer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Iniciando Consumer");
+            Console.WriteLine("Starting Consumer");
             var factory = new ConnectionFactory() { HostName = "localhost" };
 
             while (true)
