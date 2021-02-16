@@ -19,7 +19,7 @@ namespace Consumer
                     BasicGetResult consumer = channel.BasicGet("notificaciones", true);
                     if (consumer != null) {
                         string resultado = Encoding.UTF8.GetString(consumer.Body.ToArray());
-                        Console.WriteLine("Mensaje: " + resultado);
+                        Console.WriteLine("Message: " + resultado);
                         //System.Diagnostics.Debug.WriteLine("Mensaje: " + resultado);
                     }
                 }
