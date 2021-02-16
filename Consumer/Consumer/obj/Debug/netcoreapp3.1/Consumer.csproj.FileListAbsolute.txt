@@ -1,0 +1,16 @@
+F:\Repos\UPC.DSD\Consumer\Consumer\bin\Debug\netcoreapp3.1\Consumer.exe
+F:\Repos\UPC.DSD\Consumer\Consumer\bin\Debug\netcoreapp3.1\Consumer.deps.json
+F:\Repos\UPC.DSD\Consumer\Consumer\bin\Debug\netcoreapp3.1\Consumer.runtimeconfig.json
+F:\Repos\UPC.DSD\Consumer\Consumer\bin\Debug\netcoreapp3.1\Consumer.runtimeconfig.dev.json
+F:\Repos\UPC.DSD\Consumer\Consumer\bin\Debug\netcoreapp3.1\Consumer.dll
+F:\Repos\UPC.DSD\Consumer\Consumer\bin\Debug\netcoreapp3.1\Consumer.pdb
+F:\Repos\UPC.DSD\Consumer\Consumer\obj\Debug\netcoreapp3.1\Consumer.csprojAssemblyReference.cache
+F:\Repos\UPC.DSD\Consumer\Consumer\obj\Debug\netcoreapp3.1\Consumer.AssemblyInfoInputs.cache
+F:\Repos\UPC.DSD\Consumer\Consumer\obj\Debug\netcoreapp3.1\Consumer.AssemblyInfo.cs
+F:\Repos\UPC.DSD\Consumer\Consumer\obj\Debug\netcoreapp3.1\Consumer.csproj.CoreCompileInputs.cache
+F:\Repos\UPC.DSD\Consumer\Consumer\obj\Debug\netcoreapp3.1\Consumer.dll
+F:\Repos\UPC.DSD\Consumer\Consumer\obj\Debug\netcoreapp3.1\Consumer.pdb
+F:\Repos\UPC.DSD\Consumer\Consumer\obj\Debug\netcoreapp3.1\Consumer.genruntimeconfig.cache
+F:\Repos\UPC.DSD\Consumer\Consumer\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
+F:\Repos\UPC.DSD\Consumer\Consumer\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+F:\Repos\UPC.DSD\Consumer\Consumer\obj\Debug\netcoreapp3.1\Consumer.csproj.CopyComplete
