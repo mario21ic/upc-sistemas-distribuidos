@@ -21,6 +21,8 @@ namespace WCFServices
             persona.LugarNacimiento = "Huancayo";
             persona.FechaNacimiento = "11-01-1986";
 
+            // Registrar
+            /*
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
@@ -32,6 +34,7 @@ namespace WCFServices
                     System.Diagnostics.Debug.WriteLine("Mensaje: " + resultado);
                 }
             }
+            */
 
             return persona;
         }
@@ -43,6 +46,7 @@ namespace WCFServices
                 return false;
             }
 
+            /*
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
@@ -54,6 +58,7 @@ namespace WCFServices
                 channel.BasicPublish(exchange: "", routingKey: "notificaciones",
                                      basicProperties: null, body: body);
             }
+            */
 
             return true;
             //Random _random = new Random();
