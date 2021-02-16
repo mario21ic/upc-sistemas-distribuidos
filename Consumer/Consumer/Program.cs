@@ -13,7 +13,7 @@ namespace Consumer
 
             while (true)
             {
-                Console.WriteLine("Leyendo mensajes!");
+                Console.WriteLine("Reading Messages!");
                 using (var connection = factory.CreateConnection())
                 using (var channel = connection.CreateModel()) {
                     BasicGetResult consumer = channel.BasicGet("notificaciones", true);
