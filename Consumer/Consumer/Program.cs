@@ -16,7 +16,7 @@ namespace Consumer
                 Console.WriteLine("Reading Messages!");
                 using (var connection = factory.CreateConnection())
                 using (var channel = connection.CreateModel()) {
-                    BasicGetResult consumer = channel.BasicGet("notificaciones", true);
+                    BasicGetResult consumer = channel.BasicGet("Notifications", true);
                     if (consumer != null) {
                         string resultado = Encoding.UTF8.GetString(consumer.Body.ToArray());
                         Console.WriteLine("Message: " + resultado);
