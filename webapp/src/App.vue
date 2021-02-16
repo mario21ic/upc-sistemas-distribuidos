@@ -9,7 +9,6 @@
 </template>
 
 <style>
-...
 .form-wrapper {
   width: 500px;
   margin: 0 auto;
