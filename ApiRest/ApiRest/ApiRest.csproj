@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Clientes.svc" />
+    <Content Include="Departamentos.svc" />
+    <Content Include="Proyectos.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -69,11 +71,23 @@
     <Compile Include="Clientes.svc.cs">
       <DependentUpon>Clientes.svc</DependentUpon>
     </Compile>
+    <Compile Include="Departamentos.svc.cs">
+      <DependentUpon>Departamentos.svc</DependentUpon>
+    </Compile>
     <Compile Include="Dominio\Cliente.cs" />
+    <Compile Include="Dominio\Departamento.cs" />
+    <Compile Include="Dominio\Proyecto.cs" />
     <Compile Include="Errores\DuplicadoException.cs" />
     <Compile Include="Errores\EliminarException.cs" />
     <Compile Include="IClientes.cs" />
+    <Compile Include="IDepartamentos.cs" />
+    <Compile Include="IProyectos.cs" />
     <Compile Include="Persistencia\ClienteDAO.cs" />
+    <Compile Include="Persistencia\DepartamentoDAO.cs" />
+    <Compile Include="Persistencia\ProyectoDAO.cs" />
+    <Compile Include="Proyectos.svc.cs">
+      <DependentUpon>Proyectos.svc</DependentUpon>
+    </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
