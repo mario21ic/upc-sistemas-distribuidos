@@ -19,12 +19,12 @@ namespace ApiRest.Persistencia
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: "citas",
+                channel.QueueDeclare(queue: "Citas",
                                      durable: false, exclusive: false,
                                      autoDelete: false, arguments: null);
                 //var body = Encoding.UTF8.GetBytes("Cita a registrar "  + citaACrear.Nombres);
                 var body = Encoding.UTF8.GetBytes(jsonString);
-                channel.BasicPublish(exchange: "", routingKey: "citas",
+                channel.BasicPublish(exchange: "", routingKey: "Citas",
                                      basicProperties: null, body: body);
             }
 
