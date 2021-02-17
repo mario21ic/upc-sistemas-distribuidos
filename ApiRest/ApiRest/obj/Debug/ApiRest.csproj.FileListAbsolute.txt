@@ -1,7 +1,0 @@
-F:\Repos\UPC.DSD\ApiRest\ApiRest\obj\Debug\ApiRest.csprojAssemblyReference.cache
-F:\Repos\UPC.DSD\ApiRest\ApiRest\obj\Debug\ApiRest.csproj.CoreCompileInputs.cache
-F:\Repos\UPC.DSD\ApiRest\ApiRest\bin\ApiRest.dll.config
-F:\Repos\UPC.DSD\ApiRest\ApiRest\bin\ApiRest.dll
-F:\Repos\UPC.DSD\ApiRest\ApiRest\bin\ApiRest.pdb
-F:\Repos\UPC.DSD\ApiRest\ApiRest\obj\Debug\ApiRest.dll
-F:\Repos\UPC.DSD\ApiRest\ApiRest\obj\Debug\ApiRest.pdb

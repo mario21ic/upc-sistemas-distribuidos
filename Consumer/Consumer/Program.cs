@@ -8,18 +8,18 @@ namespace Consumer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Iniciando Consumer");
+            Console.WriteLine("Starting Consumer");
             var factory = new ConnectionFactory() { HostName = "localhost" };
 
             while (true)
             {
-                Console.WriteLine("Leyendo mensajes!");
+                Console.WriteLine("Reading Messages!");
                 using (var connection = factory.CreateConnection())
                 using (var channel = connection.CreateModel()) {
-                    BasicGetResult consumer = channel.BasicGet("notificaciones", true);
+                    BasicGetResult consumer = channel.BasicGet("Notifications", true);
                     if (consumer != null) {
                         string resultado = Encoding.UTF8.GetString(consumer.Body.ToArray());
-                        Console.WriteLine("Mensaje: " + resultado);
+                        Console.WriteLine("Message: " + resultado);
                         //System.Diagnostics.Debug.WriteLine("Mensaje: " + resultado);
                     }
                 }
