@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Zi/gNzwJVHVyBswpuh029/PfA2vmqdA8Q6ENyTffPRhD5cbkrbPBHIE8RJU3TA7dnN+G4lhbYEFQ/A+XXET2Tw==",
+  "dgSpecHash": "9j0Jeih6fqbiW0kvC4PbqIbj1fT8Rr/3Za0DUUhgGu9c1mpjisqDX5LAlLJjaCtyYuR/AdwzsbplbiKjsJ8opw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\source\\repos\\upc-sistemas-distribuidos\\Consumer\\Consumer\\Consumer.csproj",
+  "projectFilePath": "F:\\Repos\\UPC.DSD\\Consumer\\Consumer\\Consumer.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Usuario\\.nuget\\packages\\rabbitmq.client\\6.2.1\\rabbitmq.client.6.2.1.nupkg.sha512",
-    "C:\\Users\\Usuario\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
-    "C:\\Users\\Usuario\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
+    "C:\\Users\\mario\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\mario\\.nuget\\packages\\rabbitmq.client\\6.2.1\\rabbitmq.client.6.2.1.nupkg.sha512",
+    "C:\\Users\\mario\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\mario\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
   ],
   "logs": []
 }

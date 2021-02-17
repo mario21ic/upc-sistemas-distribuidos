@@ -14,6 +14,7 @@ namespace ApiRest.Dominio
 
         [DataMember]
         public string Modelo { get; set; }
+        
         [DataMember]
         public int Piso { get; set; }
 
