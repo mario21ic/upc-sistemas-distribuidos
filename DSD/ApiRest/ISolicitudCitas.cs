@@ -14,7 +14,7 @@ namespace ApiRest
     public interface ISolicitudCitas
     {
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "Citas", ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST", UriTemplate = "SolicitudCitas", ResponseFormat = WebMessageFormat.Json)]
         bool Crear(SolicitudCita citaACrear);
     }
 }

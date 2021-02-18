@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UPC.BE
 {
-    class Cita
+    public class Cita
     {
         public int DepartamentoId { get; set; }
         public int ClienteId { get; set; }

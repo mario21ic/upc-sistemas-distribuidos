@@ -9,7 +9,7 @@ using UPC.BE;
 
 namespace UPC.DA
 {
-    public class CitaDAO
+    public class SolicitudCitaDAO
     {
         public bool Crear(SolicitudCita citaACrear)
         {
@@ -19,12 +19,12 @@ namespace UPC.DA
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: "Citas",
+                channel.QueueDeclare(queue: "SolicitudCitas",
                                      durable: false, exclusive: false,
                                      autoDelete: false, arguments: null);
                 //var body = Encoding.UTF8.GetBytes("Cita a registrar "  + citaACrear.Nombres);
                 var body = Encoding.UTF8.GetBytes(jsonString);
-                channel.BasicPublish(exchange: "", routingKey: "Citas",
+                channel.BasicPublish(exchange: "", routingKey: "SolicitudCitas",
                                      basicProperties: null, body: body);
             }
 
