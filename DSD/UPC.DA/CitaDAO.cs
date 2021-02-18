@@ -33,5 +33,37 @@ namespace UPC.DA
             return true;
         }
 
+        public List<Cita> Listar()
+        {
+            List<Cita> lista = new List<Cita>();
+            Cita encontrado = null;
+            string sentencia = "SELECT * FROM Cita";
+            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sentencia, conexion))
+                {
+                    using (SqlDataReader resultado = comando.ExecuteReader())
+                    {
+                        while (resultado.Read())
+                        {
+                            encontrado = new Cita()
+                            {
+                                Id = (int)resultado["cita_id"],
+                                ClienteId = (int)resultado["cliente_id"],
+                                DepartamentoId = (int)resultado["departamento_id"],
+                                Mensaje  = (string)resultado["mensaje"],
+                                //FechaCita = DateTime.Parse((string)resultado["fecha_cita"]),
+                                Estado = (string)resultado["estado"],
+                                CreatedAt = DateTime.Parse((string)resultado["created_at"])
+                            };
+                            lista.Add(encontrado);
+                        }
+                    }
+                }
+            }
+            return lista;
+        }
+
     }
 }

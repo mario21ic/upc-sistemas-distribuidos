@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Consumer\Consumer.csproj", "{9F9B04FB-3A00-49B3-96D0-5E4CEED3DAB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRest", "ApiRest\ApiRest.csproj", "{9B4B6C52-5ABB-4042-86EE-85D5DD3FAD5E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3E4F9C4E-04DA-473E-81A2-39A8F5FD5FAD} = {3E4F9C4E-04DA-473E-81A2-39A8F5FD5FAD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSOAP", "ApiSOAP\ApiSOAP.csproj", "{3E4F9C4E-04DA-473E-81A2-39A8F5FD5FAD}"
 EndProject

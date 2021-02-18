@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ae31c646-79b0-49c7-b67f-4348c6893894" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:59580/IntegracionService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="IntegracionService.xsd" MetadataType="Schema" ID="cbb8b4cc-3188-4725-9d90-95726b4c28fe" SourceId="1" SourceUrl="http://localhost:59580/IntegracionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="IntegracionService.wsdl" MetadataType="Wsdl" ID="51269b7e-6115-453b-bc1e-87b86870798a" SourceId="1" SourceUrl="http://localhost:59580/IntegracionService.svc?wsdl" />
+    <MetadataFile FileName="IntegracionService1.xsd" MetadataType="Schema" ID="f77fc633-c74f-4fd3-8ab5-499e5ecd7477" SourceId="1" SourceUrl="http://localhost:59580/IntegracionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="IntegracionService.disco" MetadataType="Disco" ID="391e1afc-f21a-4e92-9087-04daadef2cd1" SourceId="1" SourceUrl="http://localhost:59580/IntegracionService.svc?disco" />
+    <MetadataFile FileName="IntegracionService2.xsd" MetadataType="Schema" ID="477651be-7219-4d15-811a-3492bbb0467e" SourceId="1" SourceUrl="http://localhost:59580/IntegracionService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

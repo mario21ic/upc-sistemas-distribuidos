@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApiSOAP.Errores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,7 +20,6 @@ namespace ApiSOAP
 
         public Cliente RegistrarCliente(Cliente clienteACrear)
         {
-            /*
             Cliente clienteExistente = clienteDAO.ObtenerPorDni(clienteACrear.Dni);
             Console.WriteLine("clienteExistente: ");
             Console.WriteLine(clienteExistente);
@@ -31,7 +31,6 @@ namespace ApiSOAP
                     Descripcion = "El Dni ya se encuentra registrado"
                 }, HttpStatusCode.Conflict);
             }
-            */
             return clienteDAO.Crear(clienteACrear);
         }
 
