@@ -2,7 +2,9 @@
 using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using UPC.BE;
@@ -12,6 +14,7 @@ namespace Consumer
 {
     class Program
     {
+
         static void Main(string[] args)
         {
 
@@ -21,50 +24,42 @@ namespace Consumer
             while (true)
             {
                 Console.WriteLine("Reading Messages!");
-                using (var connection = factory.CreateConnection())
-                using (var channel = connection.CreateModel())
+                HttpWebRequest request = WebRequest.Create("http://localhost:59577/GestionSolicitudCitaService.svc/ProcesarSolicitudCitas") as HttpWebRequest;
+                //request.Method = "POST";
+                //request.ContentType = "application/x-www-form-urlencoded";
+                request.Method = "GET";
+
+                //Console.WriteLine("Inicia Response");
+                System.Diagnostics.Debug.WriteLine("Inicia Response");
+                // Response
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                string resp = "";
+                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
-                    BasicGetResult consumer = channel.BasicGet("SolicitudCitas", true);
-                    if (consumer != null)
-                    {
-
-                        string mensaje = Encoding.UTF8.GetString(consumer.Body.ToArray());
-                        Console.WriteLine("Mensaje: " + mensaje);
-                        // {"DepartamentoId":6,"Mensaje":"Hello moto","CreatedAt":"2021-02-16T21:44:07.8143416-08:00",
-                        // "Nombres":"Hector","Apellidos":"Saira","Email":"hector@upc.edu.pe","Telefono":"966209622","Dni":"44489714"}
-                        JObject rss = JObject.Parse(mensaje);
-
-                        Cliente cliente = new Cliente();
-                        cliente.Nombres = (string)rss["Nombres"];
-                        cliente.Apellidos = (string)rss["Apellidos"];
-                        cliente.Email = (string)rss["Email"];
-                        cliente.Telefono = (string)rss["Telefono"];
-                        cliente.Dni = (string)rss["Dni"];
-                        cliente.CreatedAt = DateTime.Now;
-                        // Llamar a Reniec
-                        // Llamar a Infocorp
-                        ClienteDAO clienteDAO = new ClienteDAO();
-                        Cliente nuevoCliente = clienteDAO.Crear(cliente);
-                        Console.WriteLine(nuevoCliente.Id);
-
-                        int m_departamentoId = (int)rss["DepartamentoId"];
-                        string m_mensaje = (string)rss["Mensaje"];
-                        string m_createdat = (string)rss["CreatedAt"];
-                        Cita citaACrear = new Cita();
-                        citaACrear.DepartamentoId = m_departamentoId;
-                        citaACrear.ClienteId = nuevoCliente.Id;
-                        citaACrear.Mensaje = m_mensaje;
-                        citaACrear.Estado = "Pendiente";
-                        citaACrear.CreatedAt = DateTime.Parse(m_createdat);
-                        CitaDAO citaDAO = new CitaDAO();
-                        citaDAO.Crear(citaACrear);
-
-                        //Console.WriteLine("Message: " + mensaje);
-                        //string resultado = Encoding.UTF8.GetString(consumer.Body.ToArray());
-                        //Console.WriteLine("Message: " + resultado);
-                        //System.Diagnostics.Debug.WriteLine("Mensaje: " + resultado);
-                    }
+                    resp = reader.ReadToEnd();
+                    //Console.WriteLine("Response:");
                 }
+                System.Diagnostics.Debug.WriteLine("Response:");
+                System.Diagnostics.Debug.WriteLine(resp);
+                System.Diagnostics.Debug.WriteLine(resp.GetType());
+
+                JObject responseObj = JObject.Parse(resp);
+                /**
+                 * {
+                        "ClienteId": 25,
+                        "CreatedAt": "/Date(1613686489000-0800)/",
+                        "DepartamentoId": 6
+                    }
+                 * */
+
+                // get JSON result objects into a list
+                JObject rss = JObject.Parse(resp);
+                //temp = float.Parse((string)rss["main"]["temp"]);
+                //System.Diagnostics.Debug.WriteLine(temp);
+                Console.WriteLine("ClienteId: " + rss["ClienteId"]);
+                Console.WriteLine("CreatedAt: " + rss["CreatedAt"]);
+                Console.WriteLine("DepartamentoId: " + rss["DepartamentoId"]);
+
 
                 System.Threading.Thread.Sleep(1200); // 20 segundos *60
             }

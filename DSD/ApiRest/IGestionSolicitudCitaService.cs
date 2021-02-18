@@ -9,7 +9,7 @@ using UPC.BE;
 
 namespace ApiRest
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IGestionSlicitudCitaService" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IGestionSolicitudCitaService" in both code and config file together.
     [ServiceContract]
     public interface IGestionSolicitudCitaService
     {
@@ -18,7 +18,9 @@ namespace ApiRest
         bool RegistrarSolicitudCita(SolicitudCita citaACrear);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "SolicitudCitas", ResponseFormat = WebMessageFormat.Json)]
-        bool ProcesarSolicitudCita();
+        [WebInvoke(Method = "GET", UriTemplate = "ProcesarSolicitudCitas", ResponseFormat = WebMessageFormat.Json)]
+        //bool ProcesarSolicitudCita();
+        //List<SolicitudCitaProcesada> ProcesarSolicitudCita();
+        SolicitudCitaProcesada ProcesarSolicitudCita();
     }
 }

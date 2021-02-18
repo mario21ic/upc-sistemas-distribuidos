@@ -12,15 +12,16 @@ using UPC.DA;
 
 namespace ApiRest
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "GestionSlicitudCitaService" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select GestionSlicitudCitaService.svc or GestionSlicitudCitaService.svc.cs at the Solution Explorer and start debugging.
-    public class GestionSlicitudCitaService : IGestionSolicitudCitaService
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "GestionSolicitudCitaService" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select GestionSolicitudCitaService.svc or GestionSolicitudCitaService.svc.cs at the Solution Explorer and start debugging.
+    public class GestionSolicitudCitaService : IGestionSolicitudCitaService
     {
         readonly string colaServer = "localhost";
         readonly string colaName = "SolicitudCita";
 
         public bool RegistrarSolicitudCita(SolicitudCita citaACrear)
         {
+            citaACrear.CreatedAt = DateTime.Now;
             string jsonString = JsonConvert.SerializeObject(citaACrear);
 
             var factory = new ConnectionFactory() { HostName = colaServer };
@@ -30,7 +31,7 @@ namespace ApiRest
                 channel.QueueDeclare(queue: colaName,
                                      durable: false, exclusive: false,
                                      autoDelete: false, arguments: null);
-                
+
                 //var body = Encoding.UTF8.GetBytes("Mensaje a registrar "  + mensaje);
                 var body = Encoding.UTF8.GetBytes(jsonString);
                 channel.BasicPublish(exchange: "", routingKey: colaName,
@@ -40,11 +41,15 @@ namespace ApiRest
             return true;
         }
 
-        public bool ProcesarSolicitudCita()
+        //public List<SolicitudCitaProcesada> ProcesarSolicitudCita()
+        public SolicitudCitaProcesada ProcesarSolicitudCita()
         {
             var factory = new ConnectionFactory() { HostName = colaServer };
 
             Console.WriteLine("Reading Messages!");
+            //List<SolicitudCitaProcesada> listado = new List<SolicitudCitaProcesada>();
+            SolicitudCitaProcesada procesado = new SolicitudCitaProcesada();
+
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
@@ -82,7 +87,7 @@ namespace ApiRest
                     cliente.InfocorpCreditosPasados = infodata.CreditosPasados;
                     cliente.InfocorpCreditosActuales = infodata.CreditosActuales;
                     cliente.InfocorpStatus = infodata.Status;
-
+                    // Grabando
                     ClienteDAO clienteDAO = new ClienteDAO();
                     Cliente nuevoCliente = clienteDAO.Crear(cliente);
                     Console.WriteLine(nuevoCliente.Id);
@@ -96,8 +101,16 @@ namespace ApiRest
                     citaACrear.Mensaje = m_mensaje;
                     citaACrear.Estado = "Pendiente";
                     citaACrear.CreatedAt = DateTime.Parse(m_createdat);
+                    // Grabando
                     CitaDAO citaDAO = new CitaDAO();
                     citaDAO.Crear(citaACrear);
+
+                    // SolicitudProcesada
+
+                    procesado.ClienteId = nuevoCliente.Id;
+                    procesado.DepartamentoId = citaACrear.DepartamentoId;
+                    procesado.CreatedAt = citaACrear.CreatedAt;
+                    //listado.Add(procesado);
 
                     //Console.WriteLine("Message: " + mensaje);
                     //string resultado = Encoding.UTF8.GetString(consumer.Body.ToArray());
@@ -106,8 +119,7 @@ namespace ApiRest
                 }
             }
 
-            return true;
+            return procesado;
         }
-
     }
 }

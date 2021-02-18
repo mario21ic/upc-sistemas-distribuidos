@@ -15,7 +15,7 @@ namespace UPC.DA
         public Cliente Crear(Cliente clienteACrear)
         {
             Cliente clienteCreado = null;
-            string sentencia = "INSERT INTO Cliente  (nombres, apellidos, dni, email, telefono, activo) VALUES (@nombres, @apellidos, @dni, @email, @telefono, @activo)";
+            string sentencia = "INSERT INTO Cliente  (nombres, apellidos, dni, email, telefono, activo, created_at, reniec_validacion, infocorp_creditos_actuales, infocorp_creditos_pasados, infocorp_status) VALUES (@nombres, @apellidos, @dni, @email, @telefono, @activo, @created_at, @reniec_validacion, @infocorp_creditos_actuales, @infocorp_creditos_pasados, @infocorp_status)";
             using (SqlConnection conexion = new SqlConnection(CadenaConexion))
             {
                 conexion.Open();
@@ -27,6 +27,12 @@ namespace UPC.DA
                     comando.Parameters.Add(new SqlParameter("@email", clienteACrear.Email));
                     comando.Parameters.Add(new SqlParameter("@telefono", clienteACrear.Telefono));
                     comando.Parameters.Add(new SqlParameter("@activo", true));
+                    comando.Parameters.Add(new SqlParameter("@created_at", clienteACrear.CreatedAt));
+                    // Extras 
+                    comando.Parameters.Add(new SqlParameter("@reniec_validacion", clienteACrear.ReniecValidacion));
+                    comando.Parameters.Add(new SqlParameter("@infocorp_creditos_actuales", clienteACrear.InfocorpCreditosActuales));
+                    comando.Parameters.Add(new SqlParameter("@infocorp_creditos_pasados", clienteACrear.InfocorpCreditosPasados));
+                    comando.Parameters.Add(new SqlParameter("@infocorp_status", clienteACrear.InfocorpStatus));
                     comando.ExecuteNonQuery();
                 }
             }

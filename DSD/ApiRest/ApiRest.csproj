@@ -95,7 +95,6 @@
     </None>
     <Content Include="GestionSolicitudCitaService.svc" />
     <Content Include="InmobiliariaService.svc" />
-    <Content Include="SolicitudCitas.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -112,10 +111,6 @@
     <Compile Include="InmobiliariaService.svc.cs">
       <DependentUpon>InmobiliariaService.svc</DependentUpon>
     </Compile>
-    <Compile Include="SolicitudCitas.svc.cs">
-      <DependentUpon>SolicitudCitas.svc</DependentUpon>
-    </Compile>
-    <Compile Include="ISolicitudCitas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
