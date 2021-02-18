@@ -74,5 +74,20 @@ namespace UPC.DA
             }
             return depa;
         }
+
+        public bool DesactivarDepartamento(int codigo)
+        {
+            string sentencia = "UPDATE Departamento SET activo=0 WHERE departamento_id=@cod";
+            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sentencia, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@cod", codigo));
+                    comando.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
     }
 }

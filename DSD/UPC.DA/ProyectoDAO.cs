@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using UPC.BE;
 
-namespace UPC.DAO
+namespace UPC.DA
 {
     public class ProyectoDAO
     {
@@ -66,5 +66,6 @@ namespace UPC.DAO
             }
             return depa;
         }
+
     }
 }

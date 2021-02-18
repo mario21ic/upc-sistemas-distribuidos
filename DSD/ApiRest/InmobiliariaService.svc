@@ -1,5 +1,5 @@
 ﻿<%@ ServiceHost Language="C#" Debug="true" 
-    Service="ApiRest.Departamentos" 
-    CodeBehind="Departamentos.svc.cs"
+    Service="ApiRest.InmobiliariaService" 
+    CodeBehind="InmobiliariaService.svc.cs"
     Factory="System.ServiceModel.Activation.WebServiceHostFactory"
     %>

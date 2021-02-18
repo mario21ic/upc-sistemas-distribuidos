@@ -61,24 +61,24 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GestionSolicitudCitaService.svc" />
+    <Content Include="InmobiliariaService.svc" />
     <Content Include="SolicitudCitas.svc" />
-    <Content Include="Departamentos.svc" />
-    <Content Include="Proyectos.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GestionSolicitudCitaService.svc.cs">
+      <DependentUpon>GestionSolicitudCitaService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IGestionSolicitudCitaService.cs" />
+    <Compile Include="IInmobiliariaService.cs" />
+    <Compile Include="InmobiliariaService.svc.cs">
+      <DependentUpon>InmobiliariaService.svc</DependentUpon>
+    </Compile>
     <Compile Include="SolicitudCitas.svc.cs">
       <DependentUpon>SolicitudCitas.svc</DependentUpon>
     </Compile>
-    <Compile Include="Departamentos.svc.cs">
-      <DependentUpon>Departamentos.svc</DependentUpon>
-    </Compile>
     <Compile Include="ISolicitudCitas.cs" />
-    <Compile Include="IDepartamentos.cs" />
-    <Compile Include="IProyectos.cs" />
-    <Compile Include="Proyectos.svc.cs">
-      <DependentUpon>Proyectos.svc</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
