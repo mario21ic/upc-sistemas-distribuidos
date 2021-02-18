@@ -15,6 +15,7 @@ namespace ApiRest
     {
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "SolicitudCitas", ResponseFormat = WebMessageFormat.Json)]
+        //[WebInvoke(Method = "POST", UriTemplate = "SolicitudCitas", ResponseFormat = WebMessageFormat.Json, RequestFormat = (WebMessageFormat)WebMessageBodyStyle.WrappedRequest)]
         bool RegistrarSolicitudCita(SolicitudCita citaACrear);
 
         [OperationContract]
@@ -22,5 +23,11 @@ namespace ApiRest
         //bool ProcesarSolicitudCita();
         //List<SolicitudCitaProcesada> ProcesarSolicitudCita();
         SolicitudCitaProcesada ProcesarSolicitudCita();
+
+        /*
+        [OperationContract]
+        [WebInvoke(Method = "OPTIONS", UriTemplate = "*")]
+        void GetOptions() { }
+        */
     }
 }
