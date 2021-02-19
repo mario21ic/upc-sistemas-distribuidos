@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 using UPC.BE;
 using UPC.DA;
@@ -21,6 +22,9 @@ namespace ApiRest
 
         public bool RegistrarSolicitudCita(SolicitudCita citaACrear)
         {
+            WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Origin", "*");
+            WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Methods", "POST,GET,HEAD,PUT,DELETE,OPTIONS");
+            
             citaACrear.CreatedAt = DateTime.Now;
             string jsonString = JsonConvert.SerializeObject(citaACrear);
 
