@@ -1,5 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" 
-    Service="ApiRest.Departamentos" 
-    CodeBehind="Departamentos.svc.cs"
-    Factory="System.ServiceModel.Activation.WebServiceHostFactory"
-    %>

@@ -1,5 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" 
-    Service="ApiRest.Citas" 
-    CodeBehind="Citas.svc.cs" 
-    Factory="System.ServiceModel.Activation.WebServiceHostFactory"
-    %>
