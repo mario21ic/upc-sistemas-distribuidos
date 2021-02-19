@@ -93,12 +93,24 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\SRNotificacion\NotificacionService.disco" />
+    <None Include="Connected Services\SRNotificacion\configuration91.svcinfo" />
+    <None Include="Connected Services\SRNotificacion\configuration.svcinfo" />
+    <None Include="Connected Services\SRNotificacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="GestionSolicitudCitaService.svc" />
     <Content Include="InmobiliariaService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\SRIntegracion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SRNotificacion\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -127,6 +139,13 @@
     <None Include="Connected Services\SRIntegracion\IntegracionService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\SRNotificacion\NotificacionService.wsdl" />
+    <None Include="Connected Services\SRNotificacion\NotificacionService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SRNotificacion\NotificacionService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <Content Include="Properties\DataSources\UPC.BE.InfocorpData.datasource" />
     <None Include="Web.Debug.config">
@@ -151,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\SRIntegracion\" />
+    <WCFMetadataStorage Include="Connected Services\SRNotificacion\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

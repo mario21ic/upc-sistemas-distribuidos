@@ -26,6 +26,8 @@ namespace ApiRest
             WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Methods", "POST,GET,HEAD,PUT,DELETE,OPTIONS");
             
             citaACrear.CreatedAt = DateTime.Now;
+
+            // Escribir en Colas
             string jsonString = JsonConvert.SerializeObject(citaACrear);
 
             var factory = new ConnectionFactory() { HostName = colaServer };
@@ -41,6 +43,10 @@ namespace ApiRest
                 channel.BasicPublish(exchange: "", routingKey: colaName,
                                      basicProperties: null, body: body);
             }
+
+            // Llamar a Email Service
+            SRNotificacion.NotificacionServiceClient notiClient = new SRNotificacion.NotificacionServiceClient();
+            notiClient.EnviarEmail(citaACrear.Email, "Su solicitud de cita para el demartamento fue creado, pronto un asesor de ventas se pondra en contacto con Ud");
 
             return true;
         }

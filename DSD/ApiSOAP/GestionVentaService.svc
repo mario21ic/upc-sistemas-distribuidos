@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ApiSOAP.GestionVentaService" CodeBehind="GestionVentaService.svc.cs" %>

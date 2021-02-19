@@ -23,6 +23,7 @@ namespace Consumer
 
             while (true)
             {
+                Console.WriteLine("====================================");
                 Console.WriteLine("Reading Messages!");
                 HttpWebRequest request = WebRequest.Create("http://localhost:59577/GestionSolicitudCitaService.svc/ProcesarSolicitudCitas") as HttpWebRequest;
                 //request.Method = "POST";
